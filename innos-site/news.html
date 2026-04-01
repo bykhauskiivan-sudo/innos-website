@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html class="dark" lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Станки-Иннос | Новости и Пресс-центр</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(28, 27, 27, 0.6);
+            backdrop-filter: blur(12px);
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 20px rgba(171, 199, 255, 0.3);
+        }
+        .text-glow {
+            text-shadow: 0 0 15px rgba(171, 199, 255, 0.4);
+        }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error": "#ffb4ab",
+              "on-surface": "#e5e2e1",
+              "on-error": "#690005",
+              "on-background": "#e5e2e1",
+              "on-tertiary-container": "#432100",
+              "on-secondary-container": "#b8b8b8",
+              "inverse-primary": "#005cbc",
+              "on-tertiary-fixed-variant": "#6e3900",
+              "inverse-surface": "#e5e2e1",
+              "secondary-fixed-dim": "#c6c6c6",
+              "on-tertiary-fixed": "#2f1500",
+              "on-tertiary": "#4d2600",
+              "on-secondary-fixed-variant": "#464747",
+              "inverse-on-surface": "#313030",
+              "on-secondary-fixed": "#1a1c1c",
+              "on-primary-fixed": "#001b3f",
+              "surface-container-lowest": "#0e0e0e",
+              "surface-container": "#201f1f",
+              "surface-variant": "#353534",
+              "surface-container-low": "#1c1b1b",
+              "surface-tint": "#abc7ff",
+              "on-primary-container": "#002859",
+              "on-primary-fixed-variant": "#004590",
+              "surface": "#131313",
+              "primary-fixed-dim": "#abc7ff",
+              "secondary-container": "#484949",
+              "tertiary-container": "#da7700",
+              "on-error-container": "#ffdad6",
+              "tertiary-fixed-dim": "#ffb77d",
+              "surface-bright": "#393939",
+              "outline": "#8b91a0",
+              "surface-container-highest": "#353534",
+              "tertiary-fixed": "#ffdcc3",
+              "background": "#131313",
+              "primary-fixed": "#d7e2ff",
+              "secondary": "#c6c6c6",
+              "on-surface-variant": "#c1c6d7",
+              "error-container": "#93000a",
+              "secondary-fixed": "#e3e2e2",
+              "on-primary": "#002f66",
+              "primary": "#abc7ff",
+              "outline-variant": "#414754",
+              "primary-container": "#448fff",
+              "on-secondary": "#2f3131",
+              "tertiary": "#ffb77d",
+              "surface-container-high": "#2a2a2a",
+              "surface-dim": "#131313"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-white">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-[#1C1B1B]/40 backdrop-blur-xl border-b border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+    <div class="flex justify-between items-center px-8 h-20 max-w-[1920px] mx-auto">
+        <!-- Brand Identity -->
+        <a href="index.html" class="text-2xl font-bold tracking-tighter text-white uppercase font-headline">
+            Станки-Иннос
+        </a>
+        <!-- Navigation Links -->
+        <nav class="hidden md:flex items-center space-x-8 font-['Space_Grotesk'] tracking-tight text-sm font-medium">
+            <a class="text-[#C1C6D7] hover:text-white transition-colors" href="index.html">Главная</a>
+            <a class="text-[#C1C6D7] hover:text-white transition-colors" href="catalog.html">Продукция</a>
+            <a class="text-[#C1C6D7] hover:text-white transition-colors" href="about.html">О компании</a>
+            <a class="text-[#007FFF] border-b-2 border-[#007FFF] pb-1" href="news.html">Новости</a>
+            <a class="text-[#C1C6D7] hover:text-white transition-colors" href="contacts.html">Контакты</a>
+        </nav>
+        <!-- Actions -->
+        <div class="flex items-center space-x-6">
+            <div class="hidden lg:flex items-center space-x-4">
+                <button class="hover:bg-white/5 transition-all duration-300 p-2 rounded-full active:scale-95">
+                    <span class="material-symbols-outlined text-[#C1C6D7]">language</span>
+                </button>
+                <button class="hover:bg-white/5 transition-all duration-300 p-2 rounded-full active:scale-95">
+                    <span class="material-symbols-outlined text-[#C1C6D7]">settings</span>
+                </button>
+            </div>
+            <button class="bg-[#007FFF] text-white px-6 py-2.5 rounded-xl font-medium text-sm tracking-wide hover:brightness-110 active:scale-95 transition-all duration-150 shadow-lg shadow-[#007FFF]/20">
+                Запрос котировки
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="relative h-[60vh] min-h-[500px] w-full flex flex-col justify-end overflow-hidden pb-16">
+    <div class="absolute inset-0 z-0 border-b border-white/5">
+        <!-- Industrial background image -->
+        <img class="w-full h-full object-cover opacity-20 grayscale brightness-110" src="assets/news-hero-bg.png" alt="Industrial News Background"/>
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvc3ZnPg==')] opacity-20 mix-blend-overlay"></div>
+        <div class="absolute -top-40 -right-40 w-[600px] h-[600px] bg-primary/20 blur-[120px] rounded-full pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/20"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto w-full px-8">
+        <div class="inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 px-4 py-1.5 rounded-full mb-6">
+            <span class="material-symbols-outlined text-primary text-sm">newspaper</span>
+            <span class="text-xs font-bold tracking-widest text-primary uppercase">Медиа-центр</span>
+        </div>
+        <h1 class="font-headline text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-4 leading-[1.1]">
+            Новости <span class="bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent">Компании</span>
+        </h1>
+        <p class="text-on-surface-variant text-lg max-w-2xl leading-relaxed font-light">
+            Обновления модельного ряда, участие в выставках, статьи по технологиям ЧПУ и ключевые события индустрии.
+        </p>
+    </div>
+</section>
+
+<!-- News Grid -->
+<main class="py-16 px-8 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Feature Article (Spans 2 columns) -->
+        <article class="md:col-span-2 group relative bg-surface-container-low rounded-2xl overflow-hidden border border-white/5 transition-all duration-500 hover:border-primary/30 flex flex-col md:flex-row">
+            <div class="md:w-1/2 aspect-video md:aspect-auto overflow-hidden relative">
+                <img src="assets/machine-thumb1.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                <div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent md:hidden"></div>
+            </div>
+            <div class="md:w-1/2 p-8 md:p-10 flex flex-col justify-center">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-xs font-bold uppercase tracking-widest text-primary">ПРОИЗВОДСТВО</span>
+                    <span class="text-xs text-on-surface-variant/50">•</span>
+                    <span class="text-xs text-on-surface-variant/70 font-mono">15 Апр 2026</span>
+                </div>
+                <h3 class="font-headline text-3xl font-bold text-white tracking-tight mb-4 group-hover:text-primary transition-colors">Запуск новой линии сборки пятиосевых центров MX-V500</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed mb-8 flex-grow">
+                    Мы завершили модернизацию сборочного цеха №3 на нашем заводе в Химках. Новая конвейерная линия позволит увеличить выпуск флагманских обрабатывающих центров на 40% и снизить время ожидания поставок.
+                </p>
+                <a href="#" class="inline-flex items-center gap-2 text-white font-bold text-sm tracking-tight hover:text-primary transition-colors">
+                    Читать полностью <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="group relative bg-surface-container-low rounded-2xl overflow-hidden border border-white/5 transition-all duration-500 hover:border-primary/30 flex flex-col">
+            <div class="aspect-video overflow-hidden relative">
+                <img src="assets/machine-thumb2.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+            </div>
+            <div class="p-8 flex flex-col flex-grow">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-xs font-bold uppercase tracking-widest text-primary">ВЫСТАВКИ</span>
+                    <span class="text-xs text-on-surface-variant/50">•</span>
+                    <span class="text-xs text-on-surface-variant/70 font-mono">28 Мар 2026</span>
+                </div>
+                <h3 class="font-headline text-xl font-bold text-white tracking-tight mb-4 group-hover:text-primary transition-colors">Итоги выставки «Металлообработка 2026»</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed mb-8 flex-grow">
+                    Более 3000 специалистов посетили стенд Станки-Иннос на крупнейшей отраслевой выставке. Главным открытием стала презентация системы контроля.
+                </p>
+                <a href="#" class="inline-flex items-center gap-2 text-white font-bold text-sm tracking-tight hover:text-primary transition-colors mt-auto">
+                    Подробнее <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="group relative bg-surface-container-low rounded-2xl overflow-hidden border border-white/5 transition-all duration-500 hover:border-primary/30 flex flex-col">
+            <div class="aspect-video overflow-hidden relative">
+                <img src="assets/machine-thumb3.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+            </div>
+            <div class="p-8 flex flex-col flex-grow">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-xs font-bold uppercase tracking-widest text-primary">ТЕХНОЛОГИИ</span>
+                    <span class="text-xs text-on-surface-variant/50">•</span>
+                    <span class="text-xs text-on-surface-variant/70 font-mono">10 Мар 2026</span>
+                </div>
+                <h3 class="font-headline text-xl font-bold text-white tracking-tight mb-4 group-hover:text-primary transition-colors">Интеграция предиктивной аналитики MX Engine</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed mb-8 flex-grow">
+                    Все новые станки с марта поставляются с блоком облачной аналитики. Датчики вибраций мониторят шпиндели в реальном времени для расчета ТО.
+                </p>
+                <a href="#" class="inline-flex items-center gap-2 text-white font-bold text-sm tracking-tight hover:text-primary transition-colors mt-auto">
+                    Подробнее <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- Article 4 -->
+        <article class="group relative bg-surface-container-low rounded-2xl overflow-hidden border border-white/5 transition-all duration-500 hover:border-primary/30 flex flex-col">
+            <div class="aspect-video overflow-hidden relative">
+                <img src="assets/machine-thumb4.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+            </div>
+            <div class="p-8 flex flex-col flex-grow">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-xs font-bold uppercase tracking-widest text-tertiary">ПАРТНЕРСТВО</span>
+                    <span class="text-xs text-on-surface-variant/50">•</span>
+                    <span class="text-xs text-on-surface-variant/70 font-mono">25 Фев 2026</span>
+                </div>
+                <h3 class="font-headline text-xl font-bold text-white tracking-tight mb-4 group-hover:text-primary transition-colors">Открытие сервисного хаба в Республике Беларусь</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed mb-8 flex-grow">
+                    Проведен запуск масштабного сервисного центра в Минске на территории Индустриального парка «Великий Камень».
+                </p>
+                <a href="#" class="inline-flex items-center gap-2 text-white font-bold text-sm tracking-tight hover:text-primary transition-colors mt-auto">
+                    Подробнее <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- Article 5 -->
+        <article class="group relative bg-surface-container-low rounded-2xl overflow-hidden border border-white/5 transition-all duration-500 hover:border-primary/30 flex flex-col">
+            <div class="aspect-video overflow-hidden relative">
+                <img src="assets/machine-thumb5.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+            </div>
+            <div class="p-8 flex flex-col flex-grow">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-xs font-bold uppercase tracking-widest text-error">ОБНОВЛЕНИЕ</span>
+                    <span class="text-xs text-on-surface-variant/50">•</span>
+                    <span class="text-xs text-on-surface-variant/70 font-mono">14 Фев 2026</span>
+                </div>
+                <h3 class="font-headline text-xl font-bold text-white tracking-tight mb-4 group-hover:text-primary transition-colors">Модернизация тяжелых токарных центров</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed mb-8 flex-grow">
+                    Токарная серия H теперь комплектуется усиленными шпинделями увеличенной мощности для глубинной металлообработки.
+                </p>
+                <a href="#" class="inline-flex items-center gap-2 text-white font-bold text-sm tracking-tight hover:text-primary transition-colors mt-auto">
+                    Подробнее <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+                </a>
+            </div>
+        </article>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-20 flex items-center justify-center gap-3">
+        <button class="w-12 h-12 rounded-xl flex items-center justify-center border border-white/10 text-on-surface-variant hover:text-white hover:border-primary hover:bg-white/5 transition-all active:scale-95">
+            <span class="material-symbols-outlined text-xl">arrow_back</span>
+        </button>
+        <button class="w-12 h-12 rounded-xl flex items-center justify-center border border-white/10 text-on-surface-variant hover:text-white hover:border-primary hover:bg-white/5 transition-all active:scale-95">1</button>
+        <button class="w-12 h-12 rounded-xl flex items-center justify-center bg-primary text-on-primary font-bold shadow-[0_0_15px_rgba(171,199,255,0.3)]">2</button>
+        <button class="w-12 h-12 rounded-xl flex items-center justify-center border border-white/10 text-on-surface-variant hover:text-white hover:border-primary hover:bg-white/5 transition-all active:scale-95">3</button>
+        <button class="w-12 h-12 rounded-xl flex items-center justify-center border border-white/10 text-on-surface-variant hover:text-white hover:border-primary hover:bg-white/5 transition-all outline-none">...</button>
+        <button class="w-12 h-12 rounded-xl flex items-center justify-center border border-white/10 text-on-surface-variant hover:text-white hover:border-primary hover:bg-white/5 transition-all active:scale-95">
+            <span class="material-symbols-outlined text-xl">arrow_forward</span>
+        </button>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="w-full pt-20 pb-10 px-8 bg-[#131313]">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto">
+        <div class="col-span-1 md:col-span-1">
+            <span class="text-xl font-black text-white mb-6 block font-headline">СТАНКИ-ИННОС</span>
+            <p class="font-['Inter'] text-sm text-[#C1C6D7] leading-relaxed mb-6">
+                Проектирование и производство высокоточных металлообрабатывающих центров. Инновации для суверенитета промышленности.
+            </p>
+            <div class="flex space-x-4">
+                <a class="text-[#C1C6D7] hover:text-[#007FFF] transition-colors" href="#">
+                    <span class="material-symbols-outlined">share</span>
+                </a>
+                <a class="text-[#C1C6D7] hover:text-[#007FFF] transition-colors" href="#">
+                    <span class="material-symbols-outlined">hub</span>
+                </a>
+            </div>
+        </div>
+        <div>
+            <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-widest">Продукция</h4>
+            <ul class="space-y-4 font-['Inter'] text-sm text-[#C1C6D7]">
+                <li><a class="hover:text-[#007FFF] transition-colors" href="#">5-осевые центры</a></li>
+                <li><a class="hover:text-[#007FFF] transition-colors" href="#">Токарные станки</a></li>
+                <li><a class="hover:text-[#007FFF] transition-colors" href="#">Фрезерные станки</a></li>
+                <li><a class="hover:text-[#007FFF] transition-colors" href="#">Системы ЧПУ</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-widest">Компания</h4>
+            <ul class="space-y-4 font-['Inter'] text-sm text-[#C1C6D7]">
+                <li><a class="hover:text-[#007FFF] transition-colors" href="about.html">О нас</a></li>
+                <li><a class="hover:text-[#007FFF] transition-colors" href="contacts.html">Контакты</a></li>
+                <li><a class="hover:text-[#007FFF] transition-colors" href="#">Сервис</a></li>
+                <li><a class="hover:text-[#007FFF] transition-colors" href="#">Карта сайта</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-widest">Подписка</h4>
+            <p class="text-xs text-[#C1C6D7] mb-4">Получайте новости о новых разработках первыми.</p>
+            <div class="flex">
+                <input class="bg-surface-container-high border-none rounded-l-lg text-sm w-full focus:ring-1 focus:ring-primary" placeholder="Email" type="email"/>
+                <button class="bg-primary text-on-primary px-4 rounded-r-lg hover:brightness-110 active:scale-95 transition-all">
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+        <span class="font-['Inter'] text-sm text-[#C1C6D7]">© 2026 Станки-Иннос. Промышленное совершенство.</span>
+        <div class="flex space-x-6">
+            <a class="font-['Inter'] text-sm text-[#C1C6D7] hover:text-white transition-colors" href="#">Политика конфиденциальности</a>
+            <a class="font-['Inter'] text-sm text-[#C1C6D7] hover:text-white transition-colors" href="#">Условия использования</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
