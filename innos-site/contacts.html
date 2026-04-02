@@ -247,7 +247,7 @@
                 <h3 class="text-3xl font-headline font-bold text-white mb-2 relative z-10">Отправьте запрос или ТЗ</h3>
                 <p class="text-on-surface-variant text-sm mb-10 relative z-10">Мы ответим вам в течение 1 рабочего часа с детальным планом.</p>
 
-                <form id="contactRequestForm" class="site-form space-y-6 relative z-10" novalidate>
+                <form id="contactRequestForm" class="site-form space-y-6 relative z-10" data-mail-api="/api/send-request" novalidate>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label for="contactName" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Имя представителя</label>
@@ -368,6 +368,7 @@
   const fallbackLink = document.getElementById("contactMailtoFallback");
   const submitButton = document.getElementById("contactSubmitButton");
   const targetEmail = "contact@investstanok.ru";
+  const mailApiEndpoint = String(form.getAttribute("data-mail-api") || "").trim();
   const maxFileSizeBytes = 50 * 1024 * 1024;
 
   const setStatus = (text, type) => {
@@ -475,6 +476,28 @@
     ].join("\r\n");
   };
 
+  const sendViaApi = async (requestData) => {
+    const response = await fetch(mailApiEndpoint, {
+      method: "POST",
+      body: requestData
+    });
+
+    let responseData = null;
+    try {
+      responseData = await response.json();
+    } catch (error) {
+      responseData = null;
+    }
+
+    if (!response.ok || !responseData || responseData.ok !== true) {
+      const errorMessage =
+        responseData && typeof responseData.error === "string"
+          ? responseData.error
+          : `HTTP ${response.status}`;
+      throw new Error(errorMessage);
+    }
+  };
+
   const downloadEml = (emlContent, dateToken) => {
     const normalizedToken = dateToken
       .replace(/\s+/g, "_")
@@ -534,22 +557,49 @@
     };
     const body = toMailtoBody(payload);
     const mailtoHref = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    if (fallbackLink) {
-      fallbackLink.href = mailtoHref;
-      fallbackLink.classList.remove("hidden");
-    }
+    const requestData = new FormData();
+    requestData.append("contact_name", payload.name);
+    requestData.append("contact_company", payload.company);
+    requestData.append("contact_phone", payload.phone);
+    requestData.append("contact_email", payload.email);
+    requestData.append("contact_task", payload.task);
+    requestData.append("contact_attachment", file);
 
     try {
       if (submitButton) {
         submitButton.disabled = true;
       }
-      setStatus("Формируем письмо с вложением...", "info");
+      if (fallbackLink) {
+        fallbackLink.href = mailtoHref;
+        fallbackLink.classList.add("hidden");
+      }
+
+      if (mailApiEndpoint) {
+        try {
+          setStatus("Отправляем заявку через Яндекс Почту...", "info");
+          await sendViaApi(requestData);
+          setStatus("Заявка отправлена. Мы свяжемся с вами в течение 1 рабочего часа.", "success");
+          form.reset();
+          if (fileNameEl) {
+            fileNameEl.textContent = "Файл не выбран";
+          }
+          return;
+        } catch (apiError) {
+          setStatus("Автоотправка временно недоступна. Формируем резервный .eml...", "info");
+        }
+      }
+
+      if (fallbackLink) {
+        fallbackLink.classList.remove("hidden");
+      }
       const emlContent = await createEml({ subject, body, file });
       downloadEml(emlContent, dateToken);
       setStatus("Черновик письма с вложением сформирован. Откройте скачанный .eml и нажмите «Отправить» в почтовом клиенте.", "success");
     } catch (error) {
       setStatus("Не удалось сформировать .eml. Используйте ссылку «Открыть почтовый клиент» ниже.", "error");
+      if (fallbackLink) {
+        fallbackLink.classList.remove("hidden");
+      }
     } finally {
       if (submitButton) {
         submitButton.disabled = false;

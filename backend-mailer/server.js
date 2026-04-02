@@ -1,0 +1,156 @@
+"use strict";
+
+const path = require("path");
+const express = require("express");
+const cors = require("cors");
+const multer = require("multer");
+const nodemailer = require("nodemailer");
+require("dotenv").config({ path: path.join(__dirname, ".env") });
+
+const app = express();
+
+const port = Number(process.env.PORT || 8787);
+const maxFileSizeBytes = 50 * 1024 * 1024;
+const targetEmail = process.env.TARGET_EMAIL || "contact@investstanok.ru";
+const smtpUser = process.env.YANDEX_SMTP_USER || "";
+const smtpPass = process.env.YANDEX_SMTP_PASS || "";
+const allowedOrigins = String(process.env.ALLOWED_ORIGINS || "")
+  .split(",")
+  .map((value) => value.trim())
+  .filter(Boolean);
+
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: maxFileSizeBytes }
+});
+
+const corsOptions = {
+  origin(origin, callback) {
+    if (!origin) {
+      callback(null, true);
+      return;
+    }
+    if (allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
+      callback(null, true);
+      return;
+    }
+    callback(new Error("Origin is not allowed by CORS"));
+  }
+};
+
+app.use(cors(corsOptions));
+app.use(express.json({ limit: "1mb" }));
+
+const transporter = nodemailer.createTransport({
+  host: "smtp.yandex.ru",
+  port: 465,
+  secure: true,
+  auth: {
+    user: smtpUser,
+    pass: smtpPass
+  }
+});
+
+const normalizeValue = (value) => String(value || "").trim();
+
+const buildDateToken = (date) => {
+  const pad = (value) => String(value).padStart(2, "0");
+  const hh = pad(date.getHours());
+  const mm = pad(date.getMinutes());
+  const dd = pad(date.getDate());
+  const month = pad(date.getMonth() + 1);
+  const yyyy = date.getFullYear();
+  return `${hh}:${mm} ${dd}.${month}.${yyyy}`;
+};
+
+const buildMailText = (payload) =>
+  [
+    "Новая заявка INNOS",
+    "",
+    `Имя представителя: ${payload.name}`,
+    `Организация (ИНН): ${payload.company}`,
+    `Телефон: ${payload.phone}`,
+    `E-mail: ${payload.email}`,
+    `Задача: ${payload.task}`,
+    `Файл: ${payload.fileName}`
+  ].join("\n");
+
+app.get("/api/health", (_req, res) => {
+  res.json({ ok: true, service: "innos-mailer" });
+});
+
+app.post("/api/send-request", upload.single("contact_attachment"), async (req, res) => {
+  try {
+    if (!smtpUser || !smtpPass) {
+      res.status(500).json({
+        ok: false,
+        error: "SMTP credentials are not configured"
+      });
+      return;
+    }
+
+    const file = req.file;
+    if (!file) {
+      res.status(400).json({ ok: false, error: "Attachment is required" });
+      return;
+    }
+
+    const payload = {
+      name: normalizeValue(req.body.contact_name),
+      company: normalizeValue(req.body.contact_company),
+      phone: normalizeValue(req.body.contact_phone),
+      email: normalizeValue(req.body.contact_email),
+      task: normalizeValue(req.body.contact_task),
+      fileName: normalizeValue(file.originalname || "attachment")
+    };
+
+    if (!payload.name || !payload.company || !payload.phone || !payload.email || !payload.task) {
+      res.status(400).json({ ok: false, error: "All fields are required" });
+      return;
+    }
+
+    const subject = `innos TZ ${buildDateToken(new Date())}`;
+    const text = buildMailText(payload);
+
+    await transporter.sendMail({
+      from: smtpUser,
+      to: targetEmail,
+      replyTo: payload.email,
+      subject,
+      text,
+      attachments: [
+        {
+          filename: payload.fileName,
+          content: file.buffer,
+          contentType: file.mimetype || "application/octet-stream"
+        }
+      ]
+    });
+
+    res.json({ ok: true, message: "Email sent" });
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      error: "Failed to send email",
+      details: error instanceof Error ? error.message : "Unknown error"
+    });
+  }
+});
+
+app.use((error, _req, res, _next) => {
+  if (error && error.message === "Origin is not allowed by CORS") {
+    res.status(403).json({ ok: false, error: "CORS blocked for this origin" });
+    return;
+  }
+
+  if (error && error.code === "LIMIT_FILE_SIZE") {
+    res.status(400).json({ ok: false, error: "File too large. Max size is 50 MB" });
+    return;
+  }
+
+  res.status(500).json({ ok: false, error: "Internal server error" });
+});
+
+app.listen(port, () => {
+  console.log(`[innos-mailer] listening on port ${port}`);
+});

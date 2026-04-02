@@ -11,3 +11,9 @@
 # OS
 Thumbs.db
 Desktop.ini
+
+# Backend mail service
+node_modules/
+backend-mailer/node_modules/
+*.env
+backend-mailer/.env
