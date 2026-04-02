@@ -50,7 +50,7 @@
 
 @media (max-width: 767px) {
   .site-header {
-    --mobile-nav-open-height: 236px;
+    --mobile-nav-open-height: 0px;
   }
 
   .site-header > div {
@@ -118,7 +118,7 @@
   }
 
   .site-header.is-mobile-nav-open .site-mobile-nav-panel {
-    max-height: min(58vh, var(--mobile-nav-open-height, 236px));
+    max-height: var(--mobile-nav-open-height, 0px);
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
@@ -129,7 +129,7 @@
   }
 
   body.mobile-nav-open .site-header + * {
-    margin-top: min(58vh, var(--mobile-nav-open-height, 236px));
+    margin-top: var(--mobile-nav-open-height, 0px);
   }
 
   .site-mobile-nav-links {

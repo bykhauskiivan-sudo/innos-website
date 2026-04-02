@@ -47,7 +47,17 @@
     header.appendChild(panel);
     actions.appendChild(toggle);
 
+    const syncMenuHeight = () => {
+      const desired = linksWrap.scrollHeight + 8;
+      const px = `${desired}px`;
+      header.style.setProperty("--mobile-nav-open-height", px);
+      document.body.style.setProperty("--mobile-nav-open-height", px);
+    };
+
     const setOpen = (open) => {
+      if (open) {
+        syncMenuHeight();
+      }
       header.classList.toggle("is-mobile-nav-open", open);
       toggle.setAttribute("aria-expanded", String(open));
       toggle.setAttribute("aria-label", open ? "Закрыть меню" : "Открыть меню");
@@ -100,10 +110,18 @@
     });
 
     window.addEventListener("resize", () => {
+      syncMenuHeight();
       if (window.innerWidth >= desktopBreakpoint) {
         closeMenu();
       }
     });
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(syncMenuHeight).catch(() => {});
+    }
+
+    window.setTimeout(syncMenuHeight, 100);
+    syncMenuHeight();
   });
 })();
 
