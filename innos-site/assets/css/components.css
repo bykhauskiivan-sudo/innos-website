@@ -53,13 +53,13 @@
     position: relative;
     padding-left: 14px !important;
     padding-right: 14px !important;
-    height: 78px !important;
-    gap: 10px;
+    height: 72px !important;
+    gap: 8px;
   }
 
   .site-header > div > a {
-    max-width: 128px;
-    font-size: 18px !important;
+    max-width: 118px;
+    font-size: 16px !important;
     line-height: 1.05;
   }
 
@@ -70,8 +70,8 @@
 
   .site-header > div > .flex.items-center.space-x-6 > .btn {
     margin-right: 50px;
-    padding: 9px 11px !important;
-    font-size: 14px !important;
+    padding: 8px 10px !important;
+    font-size: 13px !important;
     letter-spacing: 0.01em !important;
   }
 
@@ -92,43 +92,52 @@
 
   .site-mobile-nav-panel {
     display: block;
-    position: fixed;
-    top: 86px;
-    right: 14px;
-    left: auto;
-    width: min(236px, calc(100vw - 28px));
-    max-height: calc(100vh - 100px);
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    right: 0;
+    width: auto;
+    max-height: 0;
     z-index: 70;
-    overflow: auto;
+    overflow: hidden;
     background: rgba(19, 19, 19, 0.96);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
-    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.45);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 0;
+    box-shadow: 0 14px 24px rgba(0, 0, 0, 0.28);
     backdrop-filter: blur(14px);
     opacity: 0;
     pointer-events: none;
-    transform: translateY(-6px) scale(0.98);
-    transform-origin: top right;
-    transition: opacity 220ms ease, transform 220ms ease;
+    transform: translateY(-6px);
+    transition: max-height 240ms ease, opacity 220ms ease, transform 220ms ease;
   }
 
   .site-header.is-mobile-nav-open .site-mobile-nav-panel {
+    max-height: var(--mobile-nav-open-height, 230px);
     opacity: 1;
     pointer-events: auto;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
+  }
+
+  .site-header + * {
+    transition: margin-top 240ms ease;
+  }
+
+  body.mobile-nav-open .site-header + * {
+    margin-top: var(--mobile-nav-open-height, 230px);
   }
 
   .site-mobile-nav-links {
     display: grid;
     gap: 0;
-    padding: 6px 0;
+    padding: 4px 0;
   }
 
   .site-mobile-nav-links a {
     display: block;
-    padding: 11px 14px;
+    padding: 9px 16px;
     color: #e5e2e1;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.01em;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
