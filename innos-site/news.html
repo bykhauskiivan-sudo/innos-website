@@ -10,8 +10,8 @@
     <meta property="og:type" content="website"/>
     <meta property="og:locale" content="ru_RU"/>
     <script src="assets/js/vendor/tailwind-runtime.js"></script>
-    <link href="assets/css/main.css?v=20260402m11" rel="stylesheet"/>
-    <script defer src="assets/js/main.js?v=20260402m11"></script>
+    <link href="assets/css/main.css?v=20260402m12" rel="stylesheet"/>
+    <script defer src="assets/js/main.js?v=20260402m12"></script>
     <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -143,25 +143,72 @@
 </nav>
 
 <!-- Hero Section -->
-<section class="relative h-[60vh] min-h-[500px] w-full flex flex-col justify-end overflow-hidden pb-16">
-    <div class="absolute inset-0 z-0 border-b border-white/5">
-        <!-- Industrial background image -->
-        <img class="w-full h-full object-cover opacity-20 grayscale brightness-110" src="assets/news-hero-bg.png" alt="Industrial News Background"/>
-        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvc3ZnPg==')] opacity-20 mix-blend-overlay"></div>
-        <div class="absolute -top-40 -right-40 w-[600px] h-[600px] bg-primary/20 blur-[120px] rounded-full pointer-events-none"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/20"></div>
+<section class="news-hero" data-news-hero>
+    <div class="news-hero__bg">
+        <img class="news-hero__bg-image" src="assets/news-hero-bg.png" alt="Фон раздела новостей Станки-Иннос"/>
+        <div class="news-hero__bg-pattern"></div>
+        <div class="news-hero__bg-glow"></div>
+        <div class="news-hero__bg-overlay"></div>
     </div>
-    <div class="relative z-10 max-w-7xl mx-auto w-full px-8">
-        <div class="inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 px-4 py-1.5 rounded-full mb-6">
-            <span class="material-symbols-outlined text-primary text-sm">newspaper</span>
-            <span class="text-xs font-bold tracking-widest text-primary uppercase">Медиа-центр</span>
+    <div class="news-hero__inner max-w-7xl mx-auto px-8">
+        <div class="news-hero__intro">
+            <div class="inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 px-4 py-1.5 rounded-full mb-6">
+                <span class="material-symbols-outlined text-primary text-sm">newspaper</span>
+                <span class="text-xs font-bold tracking-widest text-primary uppercase">Медиа-центр</span>
+            </div>
+            <h1 class="news-hero__title">
+                Новости <span class="bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent">Компании</span>
+            </h1>
+            <p class="news-hero__lead">
+                Публикуем обновления модельного ряда, инженерные разборы, кейсы внедрения и новости отрасли, которые влияют на сроки поставки и экономику производства.
+            </p>
+            <p class="news-hero__note">
+                Раздел помогает быстро оценить, куда движется продукт, какие технологии уже внедрены и что это дает производственным командам.
+            </p>
         </div>
-        <h1 class="font-headline text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-4 leading-[1.1]">
-            Новости <span class="bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent">Компании</span>
-        </h1>
-        <p class="text-on-surface-variant text-lg max-w-2xl leading-relaxed font-light">
-            Обновления модельного ряда, участие в выставках, статьи по технологиям ЧПУ и ключевые события индустрии.
-        </p>
+
+        <div class="news-hero-slider glass-card">
+            <div class="news-hero-slider__head">
+                <p class="news-hero-slider__title">3 последние новости</p>
+                <div class="news-hero-slider__nav">
+                    <button class="news-hero-slider__arrow" type="button" aria-label="Предыдущая новость" data-news-hero-prev>
+                        <span class="material-symbols-outlined">arrow_back</span>
+                    </button>
+                    <button class="news-hero-slider__arrow" type="button" aria-label="Следующая новость" data-news-hero-next>
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="news-hero-slider__slides">
+                <article class="news-hero-slide is-active" data-news-hero-slide>
+                    <p class="news-hero-slide__meta"><span>Производство</span><span>15 Апр 2026</span></p>
+                    <h2 class="news-hero-slide__headline">Запуск новой линии сборки пятиосевых центров MX-V500</h2>
+                    <p class="news-hero-slide__text">Модернизация цеха №3 увеличивает выпуск флагманских центров на 40% и сокращает время ожидания поставок.</p>
+                    <a class="news-hero-slide__link" href="#news-item-1">Читать новость</a>
+                </article>
+
+                <article class="news-hero-slide" data-news-hero-slide>
+                    <p class="news-hero-slide__meta"><span>Выставки</span><span>28 Мар 2026</span></p>
+                    <h2 class="news-hero-slide__headline">Итоги выставки «Металлообработка 2026»</h2>
+                    <p class="news-hero-slide__text">На стенде Станки-Иннос представили новую систему контроля и получили запросы от машиностроительных предприятий РФ.</p>
+                    <a class="news-hero-slide__link" href="#news-item-2">Читать новость</a>
+                </article>
+
+                <article class="news-hero-slide" data-news-hero-slide>
+                    <p class="news-hero-slide__meta"><span>Технологии</span><span>10 Мар 2026</span></p>
+                    <h2 class="news-hero-slide__headline">Интеграция предиктивной аналитики MX Engine</h2>
+                    <p class="news-hero-slide__text">С марта новые станки поставляются с блоком облачной аналитики для прогнозирования ТО и снижения аварийных простоев.</p>
+                    <a class="news-hero-slide__link" href="#news-item-3">Читать новость</a>
+                </article>
+            </div>
+
+            <div class="news-hero-slider__dots" role="tablist" aria-label="Последние новости">
+                <button class="news-hero-slider__dot is-active" type="button" aria-label="Новость 1" aria-selected="true" data-news-hero-dot="0"></button>
+                <button class="news-hero-slider__dot" type="button" aria-label="Новость 2" aria-selected="false" data-news-hero-dot="1"></button>
+                <button class="news-hero-slider__dot" type="button" aria-label="Новость 3" aria-selected="false" data-news-hero-dot="2"></button>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -170,7 +217,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         
         <!-- Feature Article (Spans 2 columns) -->
-        <article class="md:col-span-2 group relative bg-surface-container-low rounded-2xl overflow-hidden border border-white/5 transition-all duration-500 hover:border-primary/30 flex flex-col md:flex-row">
+        <article id="news-item-1" class="md:col-span-2 group relative bg-surface-container-low rounded-2xl overflow-hidden border border-white/5 transition-all duration-500 hover:border-primary/30 flex flex-col md:flex-row">
             <div class="md:w-1/2 aspect-video md:aspect-auto overflow-hidden relative">
                 <img src="assets/machine-thumb1.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
                 <div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent md:hidden"></div>
@@ -192,7 +239,7 @@
         </article>
 
         <!-- Article 2 -->
-        <article class="group relative bg-surface-container-low rounded-2xl overflow-hidden border border-white/5 transition-all duration-500 hover:border-primary/30 flex flex-col">
+        <article id="news-item-2" class="group relative bg-surface-container-low rounded-2xl overflow-hidden border border-white/5 transition-all duration-500 hover:border-primary/30 flex flex-col">
             <div class="aspect-video overflow-hidden relative">
                 <img src="assets/machine-thumb2.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
             </div>
@@ -213,7 +260,7 @@
         </article>
 
         <!-- Article 3 -->
-        <article class="group relative bg-surface-container-low rounded-2xl overflow-hidden border border-white/5 transition-all duration-500 hover:border-primary/30 flex flex-col">
+        <article id="news-item-3" class="group relative bg-surface-container-low rounded-2xl overflow-hidden border border-white/5 transition-all duration-500 hover:border-primary/30 flex flex-col">
             <div class="aspect-video overflow-hidden relative">
                 <img src="assets/machine-thumb3.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
             </div>
