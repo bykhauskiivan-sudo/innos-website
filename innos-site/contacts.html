@@ -126,7 +126,7 @@
 </header>
 
 <!-- Breadcrumbs -->
-<nav aria-label="Breadcrumb" class="relative z-10 max-w-7xl mx-auto px-8 pt-24 pb-2">
+<nav aria-label="Breadcrumb" class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pt-24 pb-2">
 <ol class="flex items-center gap-2 text-sm font-body text-on-surface-variant" itemscope itemtype="https://schema.org/BreadcrumbList">
 <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
 <a itemprop="item" href="index.html" class="hover:text-primary transition-colors"><span itemprop="name">Главная</span></a>
@@ -141,31 +141,92 @@
 </nav>
 
 <!-- Hero Section -->
-<section class="relative h-[45vh] min-h-[400px] w-full flex flex-col justify-end overflow-hidden pb-16">
+<section class="relative h-[45vh] min-h-[320px] md:min-h-[400px] w-full flex flex-col justify-end overflow-hidden pb-10 md:pb-16">
     <div class="absolute inset-0 z-0 border-b border-white/5">
         <img class="w-full h-full object-cover opacity-20 grayscale brightness-110" src="assets/contacts-hero-bg.png" alt="Industrial factory layout"/>
         <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvc3ZnPg==')] opacity-20 mix-blend-overlay"></div>
         <div class="absolute -top-40 -left-40 w-[600px] h-[600px] bg-primary/10 blur-[120px] rounded-full pointer-events-none"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/20"></div>
     </div>
-    <div class="relative z-10 max-w-7xl mx-auto w-full px-8">
+    <div class="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-8">
         <div class="inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 px-4 py-1.5 rounded-full mb-6">
             <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
             <span class="text-xs font-bold tracking-widest text-primary uppercase">Команда на связи</span>
         </div>
-        <h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter text-white mb-4 leading-[1.1]">
-            <span class="bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent">Ваш</span> Партнёр <br/> в Производстве
+        <h1 class="font-headline text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter text-white mb-4 leading-[1.1]">
+            <span class="bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent">Ваш</span> Партнёр <br/>в&nbsp;Производстве
         </h1>
     </div>
 </section>
 
-<main class="py-16 px-8 max-w-7xl mx-auto min-h-screen">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<main class="py-12 md:py-16 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto min-h-screen">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+        
+        <!-- Form Column -->
+        <div class="lg:col-span-7 order-1 lg:order-1">
+            <div class="glass-card p-6 sm:p-7 md:p-10 lg:p-12 rounded-3xl shadow-2xl relative overflow-hidden">
+                <!-- Decorative glow -->
+                <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[80px] rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+                
+                <h3 class="text-2xl sm:text-3xl font-headline font-bold text-white mb-2 relative z-10">Отправьте запрос или ТЗ</h3>
+                <p class="text-on-surface-variant text-sm mb-8 md:mb-10 relative z-10">Мы ответим вам в течение 1 рабочего часа с детальным планом.</p>
+
+                <form id="contactRequestForm" class="site-form space-y-6 relative z-10" data-mail-api="/api/send-request" novalidate>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label for="contactName" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Имя представителя</label>
+                            <input id="contactName" name="contact_name" type="text" required class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Пётр Николаевич">
+                        </div>
+                        <div class="space-y-2">
+                            <label for="contactCompany" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Организация (ИНН)</label>
+                            <input id="contactCompany" name="contact_company" type="text" required class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="ООО Инновация">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label for="contactPhone" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Телефон</label>
+                            <input id="contactPhone" name="contact_phone" type="tel" required class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="+7...">
+                        </div>
+                        <div class="space-y-2">
+                            <label for="contactEmail" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">E-mail</label>
+                            <input id="contactEmail" name="contact_email" type="email" required class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="company@mail.ru">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="contactTask" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Тип оборудования и описание задачи</label>
+                        <textarea id="contactTask" name="contact_task" rows="5" required class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none" placeholder="Укажите технические требования или прикрепите чертеж..."></textarea>
+                    </div>
+
+                    <div class="border border-dashed border-white/20 rounded-xl p-6 text-on-surface-variant hover:text-white hover:border-primary transition-colors">
+                        <input id="contactAttachment" name="contact_attachment" type="file" class="sr-only" />
+                        <label for="contactAttachment" class="flex flex-col items-center justify-center cursor-pointer group">
+                            <span class="material-symbols-outlined mb-2 text-primary group-hover:scale-110 transition-transform">upload_file</span>
+                            <span id="contactAttachmentLabel" class="text-sm font-medium">Прикрепить чертеж или ТЗ (до 50 Мб)</span>
+                            <span id="contactAttachmentName" class="text-xs mt-2 text-on-surface-variant/70">Файл не выбран</span>
+                        </label>
+                    </div>
+
+                    <div class="pt-4 flex flex-col items-start gap-3">
+                        <button id="contactSubmitButton" type="submit" class="btn btn-primary w-full sm:w-auto px-12 py-5 bg-primary text-on-primary rounded-xl font-bold uppercase tracking-widest text-sm hover:shadow-[0_0_30px_rgba(171,199,255,0.4)] transition-all active:scale-95 flex justify-center items-center gap-3">
+                            ОТПРАВИТЬ ДАННЫЕ
+                            <span class="material-symbols-outlined text-[18px]">send</span>
+                        </button>
+                        <a id="contactMailtoFallback" href="#" class="text-xs text-primary hover:text-white transition-colors hidden">
+                            Открыть почтовый клиент
+                        </a>
+                        <p id="contactFormStatus" class="text-xs text-on-surface-variant/70" aria-live="polite"></p>
+                    </div>
+                    <p class="text-xs text-on-surface-variant/50">Нажимая кнопку, вы соглашаетесь с условиями обработки персональных данных в соответствии с ФЗ-152.</p>
+                </form>
+            </div>
+        </div>
         
         <!-- Contact Info Column -->
-        <div class="lg:col-span-5 space-y-12">
+        <div class="lg:col-span-5 order-2 lg:order-2 space-y-10 md:space-y-12">
             
-            <p class="text-on-surface-variant text-lg leading-relaxed">
+            <p class="text-on-surface-variant text-base md:text-lg leading-relaxed">
                 Отдел продаж Станки-Иннос готов обсудить поставки оборудования, а сервисная служба — оперативно решить любые технические вопросы круглосуточно.
             </p>
 
@@ -238,66 +299,6 @@
 
         </div>
 
-        <!-- Form Column -->
-        <div class="lg:col-span-7">
-            <div class="glass-card p-10 md:p-14 rounded-3xl shadow-2xl relative overflow-hidden">
-                <!-- Decorative glow -->
-                <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[80px] rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-                
-                <h3 class="text-3xl font-headline font-bold text-white mb-2 relative z-10">Отправьте запрос или ТЗ</h3>
-                <p class="text-on-surface-variant text-sm mb-10 relative z-10">Мы ответим вам в течение 1 рабочего часа с детальным планом.</p>
-
-                <form id="contactRequestForm" class="site-form space-y-6 relative z-10" data-mail-api="/api/send-request" novalidate>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label for="contactName" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Имя представителя</label>
-                            <input id="contactName" name="contact_name" type="text" required class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Пётр Николаевич">
-                        </div>
-                        <div class="space-y-2">
-                            <label for="contactCompany" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Организация (ИНН)</label>
-                            <input id="contactCompany" name="contact_company" type="text" required class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="ООО Инновация">
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label for="contactPhone" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Телефон</label>
-                            <input id="contactPhone" name="contact_phone" type="tel" required class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="+7...">
-                        </div>
-                        <div class="space-y-2">
-                            <label for="contactEmail" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">E-mail</label>
-                            <input id="contactEmail" name="contact_email" type="email" required class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="company@mail.ru">
-                        </div>
-                    </div>
-
-                    <div class="space-y-2">
-                        <label for="contactTask" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Тип оборудования и описание задачи</label>
-                        <textarea id="contactTask" name="contact_task" rows="5" required class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none" placeholder="Укажите технические требования или прикрепите чертеж..."></textarea>
-                    </div>
-
-                    <div class="border border-dashed border-white/20 rounded-xl p-6 text-on-surface-variant hover:text-white hover:border-primary transition-colors">
-                        <input id="contactAttachment" name="contact_attachment" type="file" class="sr-only" />
-                        <label for="contactAttachment" class="flex flex-col items-center justify-center cursor-pointer group">
-                            <span class="material-symbols-outlined mb-2 text-primary group-hover:scale-110 transition-transform">upload_file</span>
-                            <span id="contactAttachmentLabel" class="text-sm font-medium">Прикрепить чертеж или ТЗ (до 50 Мб)</span>
-                            <span id="contactAttachmentName" class="text-xs mt-2 text-on-surface-variant/70">Файл не выбран</span>
-                        </label>
-                    </div>
-
-                    <div class="pt-4 flex flex-col items-start gap-3">
-                        <button id="contactSubmitButton" type="submit" class="btn btn-primary w-full sm:w-auto px-12 py-5 bg-primary text-on-primary rounded-xl font-bold uppercase tracking-widest text-sm hover:shadow-[0_0_30px_rgba(171,199,255,0.4)] transition-all active:scale-95 flex justify-center items-center gap-3">
-                            ОТПРАВИТЬ ДАННЫЕ
-                            <span class="material-symbols-outlined text-[18px]">send</span>
-                        </button>
-                        <a id="contactMailtoFallback" href="#" class="text-xs text-primary hover:text-white transition-colors hidden">
-                            Открыть почтовый клиент
-                        </a>
-                        <p id="contactFormStatus" class="text-xs text-on-surface-variant/70" aria-live="polite"></p>
-                    </div>
-                    <p class="text-xs text-on-surface-variant/50">Нажимая кнопку, вы соглашаетесь с условиями обработки персональных данных в соответствии с ФЗ-152.</p>
-                </form>
-            </div>
-        </div>
     </div>
 </main>
 
