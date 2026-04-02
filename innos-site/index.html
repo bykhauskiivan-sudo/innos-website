@@ -107,17 +107,19 @@
 </nav>
 <!-- Actions -->
 <div class="flex items-center space-x-6">
-<div class="hidden lg:flex items-center space-x-4">
-<button class="hover:bg-white/5 transition-all duration-300 p-2 rounded-full active:scale-95">
-<span class="material-symbols-outlined text-[#C1C6D7]">language</span>
-</button>
-<button class="hover:bg-white/5 transition-all duration-300 p-2 rounded-full active:scale-95">
-<span class="material-symbols-outlined text-[#C1C6D7]">settings</span>
-</button>
+<div class="hidden xl:flex items-center space-x-6 text-sm">
+    <a href="tel:88005004030" class="text-white hover:text-primary transition-colors flex items-center font-bold tracking-tight">
+        <span class="material-symbols-outlined text-[18px] mr-1">call</span>
+        8 (800) 500-40-30
+    </a>
+    <a href="mailto:sales@stanki-innos.ru" class="text-[#C1C6D7] hover:text-white transition-colors flex items-center">
+        <span class="material-symbols-outlined text-[18px] mr-1">mail</span>
+        sales@stanki-innos.ru
+    </a>
 </div>
-<button class="bg-[#007FFF] text-white px-6 py-2.5 rounded-xl font-medium text-sm tracking-wide hover:brightness-110 active:scale-95 transition-all duration-150 shadow-lg shadow-[#007FFF]/20">
-                    Запрос котировки
-                </button>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-bold text-sm tracking-wide hover:brightness-110 active:scale-95 transition-all duration-150 shadow-lg shadow-primary/20">
+    Получить ТКП
+</button>
 </div>
 </div>
 </header>
@@ -134,18 +136,18 @@
 <span class="text-xs font-bold tracking-widest text-primary uppercase">Machining Transformation (MX)</span>
 </div>
 <h1 class="font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white mb-6 leading-[1.1]">
-                Производство и поставка<br/> 
-                <span class="bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent">станков с ЧПУ</span>
+                Оборудование для<br/> 
+                <span class="bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent">суверенитета</span>
 </h1>
 <p class="text-on-surface-variant text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-                Проектируем и собираем высокоточные металлообрабатывающие центры. Импортозамещение, пусконаладка и обучение инженеров. Доставка по РФ и СНГ.
+                Высокоточные 5-осевые портальные центры, которые окупаются быстрее. Интеграция операций, работа 24/7 и полная локализация сервиса в РФ.
             </p>
 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
 <a href="catalog.html" class="w-full sm:w-auto px-10 py-4 bg-primary text-on-primary rounded-xl font-bold text-base hover:shadow-[0_0_30px_rgba(171,199,255,0.4)] transition-all active:scale-95 flex items-center justify-center">
-                    Посмотреть каталог
+                    Матрица станков
                 </a>
 <a href="contacts.html" class="w-full sm:w-auto px-10 py-4 border border-outline-variant text-primary rounded-xl font-bold text-base hover:bg-white/5 transition-all active:scale-95 flex items-center justify-center">
-                    Получить консультацию
+                    Расчет проекта
                 </a>
 </div>
 </div>
@@ -156,37 +158,223 @@
 </div>
 </section>
 
-<!-- Популярные категории -->
+<!-- Концепция MX (DMG MORI Style) -->
 <section class="py-20 px-8 max-w-7xl mx-auto border-t border-white/5 relative z-10">
     <div class="mb-12">
-        <h2 class="font-headline text-3xl font-bold text-white mb-4">Популярные категории</h2>
-        <p class="text-on-surface-variant text-sm">Передовые решения для любых задач металлообработки.</p>
+        <div class="inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-4">
+            <span class="material-symbols-outlined text-primary text-[14px]">psychology</span>
+            <span class="text-xs font-bold tracking-widest text-primary uppercase">Философия платформы</span>
+        </div>
+        <h2 class="font-headline text-3xl font-bold text-white mb-4">Трансформация вашей прибыли</h2>
+        <p class="text-on-surface-variant text-sm max-w-2xl text-balance">Мы меняем подход от «закупки штучных станков» к внедрению комплексных технологических решений, снижая себестоимость мехобработки на 30%.</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <a href="catalog.html" class="glass-card p-8 rounded-2xl group border border-white/5 hover:border-primary/30 transition-all flex flex-col justify-between h-48">
-            <span class="material-symbols-outlined text-primary text-3xl mb-4 group-hover:scale-110 transition-transform">precision_manufacturing</span>
-            <div>
-                <h3 class="font-bold text-white group-hover:text-primary transition-colors text-lg tracking-tight">Фрезерные центры (5 осей)</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-card p-8 rounded-2xl group border border-white/5 hover:border-primary/30 transition-all flex flex-col h-full bg-gradient-to-br from-surface to-background/50 relative overflow-hidden">
+            <div class="absolute -right-10 -top-10 w-32 h-32 bg-primary/5 rounded-full blur-[40px] group-hover:bg-primary/10 transition-colors"></div>
+            <span class="material-symbols-outlined text-primary text-4xl mb-6">dynamic_feed</span>
+            <div class="mt-auto">
+                <h3 class="font-bold text-white text-xl tracking-tight mb-3">Интеграция процессов</h3>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Производство детали за один установ в 5 осях. Резкое снижение погрешностей перебазирования и полный отказ от межоперационного пролеживания.</p>
             </div>
-        </a>
-        <a href="catalog.html" class="glass-card p-8 rounded-2xl group border border-white/5 hover:border-primary/30 transition-all flex flex-col justify-between h-48">
-            <span class="material-symbols-outlined text-primary text-3xl mb-4 group-hover:scale-110 transition-transform">settings</span>
-            <div>
-                <h3 class="font-bold text-white group-hover:text-primary transition-colors text-lg tracking-tight">Токарные станки с ЧПУ</h3>
+        </div>
+        <div class="glass-card p-8 rounded-2xl group border border-white/5 hover:border-tertiary/30 transition-all flex flex-col h-full bg-gradient-to-br from-surface to-background/50 relative overflow-hidden">
+            <div class="absolute -right-10 -top-10 w-32 h-32 bg-tertiary/5 rounded-full blur-[40px] group-hover:bg-tertiary/10 transition-colors"></div>
+            <span class="material-symbols-outlined text-tertiary text-4xl mb-6">robot_2</span>
+            <div class="mt-auto">
+                <h3 class="font-bold text-white text-xl tracking-tight mb-3">Автоматизация 24/7</h3>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Интеграция барфидеров, манипуляторов и станций смены паллет для непрерывной работы цеха в ночные смены без участия оператора.</p>
             </div>
-        </a>
-        <a href="catalog.html" class="glass-card p-8 rounded-2xl group border border-white/5 hover:border-primary/30 transition-all flex flex-col justify-between h-48">
-            <span class="material-symbols-outlined text-primary text-3xl mb-4 group-hover:scale-110 transition-transform">view_in_ar</span>
-            <div>
-                <h3 class="font-bold text-white group-hover:text-primary transition-colors text-lg tracking-tight">Горизонтально-расточные</h3>
+        </div>
+        <div class="glass-card p-8 rounded-2xl group border border-white/5 hover:border-primary/30 transition-all flex flex-col h-full bg-gradient-to-br from-surface to-background/50 relative overflow-hidden">
+            <div class="absolute -right-10 -top-10 w-32 h-32 bg-primary/5 rounded-full blur-[40px] group-hover:bg-primary/10 transition-colors"></div>
+            <span class="material-symbols-outlined text-primary text-4xl mb-6">hub</span>
+            <div class="mt-auto">
+                <h3 class="font-bold text-white text-xl tracking-tight mb-3">Цифровизация (DX)</h3>
+                <p class="text-sm text-on-surface-variant leading-relaxed">Прямая передача данных в ERP-системы. Телеметрия износа инструмента и предиктивная аналитика предотвращают аварии до их возникновения.</p>
             </div>
-        </a>
-        <a href="catalog.html" class="glass-card p-8 rounded-2xl group border border-white/5 hover:border-primary/30 transition-all flex flex-col justify-between h-48">
-            <span class="material-symbols-outlined text-primary text-3xl mb-4 group-hover:scale-110 transition-transform">memory</span>
-            <div>
-                <h3 class="font-bold text-white group-hover:text-primary transition-colors text-lg tracking-tight">Автоматизация и ЧПУ</h3>
+        </div>
+    </div>
+</section>
+
+<!-- Product Showcase -->
+<section class="py-24 px-8 max-w-7xl mx-auto border-t border-white/5">
+    <div class="mb-12 md:flex justify-between items-end">
+        <div class="mb-6 md:mb-0">
+            <div class="inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-4">
+                <span class="material-symbols-outlined text-primary text-[14px]">inventory_2</span>
+                <span class="text-xs font-bold tracking-widest text-primary uppercase">В наличии на складах</span>
             </div>
-        </a>
+            <h2 class="font-headline text-3xl font-bold text-white mb-4">Флагманские решения</h2>
+            <p class="text-on-surface-variant text-sm max-w-xl">Оборудование, доступное с минимальным сроком отгрузки.</p>
+        </div>
+        <a href="catalog.html" class="inline-flex items-center text-primary font-bold hover:text-white transition-colors tracking-wide bg-primary/5 hover:bg-primary/20 px-6 py-2 rounded-lg border border-primary/20">Каталог станков <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span></a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Product 1 -->
+        <div class="group bg-[#131515] rounded-2xl border border-white/5 overflow-hidden hover:border-primary/40 hover:shadow-[0_0_30px_rgba(107,135,132,0.15)] transition-all duration-300">
+            <div class="aspect-[4/3] relative flex items-center justify-center p-6 bg-surface-container-low border-b border-white/5">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#131515] to-transparent z-10"></div>
+                <div class="w-full h-full border border-dashed border-white/20 rounded-xl flex flex-col items-center justify-center opacity-50 relative z-0 group-hover:scale-105 transition-transform duration-500 bg-black/20">
+                   <span class="material-symbols-outlined text-4xl mb-2 text-primary">view_in_ar</span>
+                   <span class="text-xs font-['Inter'] uppercase tracking-widest text-white">Модель Серии M</span>
+                </div>
+                <div class="absolute top-4 left-4 bg-primary/20 border border-primary/40 text-primary text-[10px] font-bold px-3 py-1 rounded-full z-20 backdrop-blur-md uppercase tracking-widest">Хит продаж</div>
+            </div>
+            <div class="p-8 pt-6 relative z-20">
+                <h3 class="text-2xl font-headline font-bold text-white mb-2 group-hover:text-primary transition-colors">Серия INNOS-M</h3>
+                <p class="text-on-surface-variant text-sm mb-6 h-10">5-осевые портальные центры обрабоки сложных поверхностей</p>
+                <div class="space-y-3 font-['Inter'] text-sm text-[#C1C6D7] mb-8">
+                    <div class="flex justify-between border-b border-white/5 pb-2"><span>Шпиндель</span><span class="text-white font-medium">18 000 об/мин</span></div>
+                    <div class="flex justify-between border-b border-white/5 pb-2"><span>Точность позиц.</span><span class="text-white font-medium">±0.002 мм</span></div>
+                    <div class="flex justify-between pb-1"><span>Осей</span><span class="text-white font-medium">5 (Симольтанно)</span></div>
+                </div>
+                <a href="catalog.html" class="w-full flex items-center justify-center text-center border border-white/10 text-white hover:bg-white/10 py-3 rounded-lg font-bold text-sm transition-all duration-300">Спецификация</a>
+            </div>
+        </div>
+        <!-- Product 2 -->
+        <div class="group bg-[#131515] rounded-2xl border border-white/5 overflow-hidden hover:border-tertiary/40 transition-all duration-300">
+            <div class="aspect-[4/3] relative flex items-center justify-center p-6 bg-surface-container-low border-b border-white/5">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#131515] to-transparent z-10"></div>
+                <div class="w-full h-full border border-dashed border-white/20 rounded-xl flex flex-col items-center justify-center opacity-50 relative z-0 group-hover:scale-105 transition-transform duration-500 bg-gradient-to-br from-tertiary/5 to-transparent">
+                   <span class="material-symbols-outlined text-4xl mb-2 text-tertiary">settings</span>
+                   <span class="text-xs font-['Inter'] uppercase tracking-widest text-white">Модель Серии T</span>
+                </div>
+            </div>
+            <div class="p-8 pt-6 relative z-20">
+                <h3 class="text-2xl font-headline font-bold text-white mb-2 group-hover:text-tertiary transition-colors">Серия INNOS-T</h3>
+                <p class="text-on-surface-variant text-sm mb-6 h-10">Прецизионные токарные центры с приводным инструментом</p>
+                <div class="space-y-3 font-['Inter'] text-sm text-[#C1C6D7] mb-8">
+                    <div class="flex justify-between border-b border-white/5 pb-2"><span>ø Точения</span><span class="text-white font-medium">420 мм</span></div>
+                    <div class="flex justify-between border-b border-white/5 pb-2"><span>Ось Y</span><span class="text-white font-medium">±60 мм</span></div>
+                    <div class="flex justify-between pb-1"><span>Станина</span><span class="text-white font-medium">Наклон 45°</span></div>
+                </div>
+                <a href="catalog.html" class="w-full flex items-center justify-center text-center border border-white/10 text-white hover:bg-white/10 py-3 rounded-lg font-bold text-sm transition-all duration-300">Спецификация</a>
+            </div>
+        </div>
+        <!-- Product 3 -->
+        <div class="group bg-[#131515] rounded-2xl border border-white/5 overflow-hidden hover:border-[#007FFF]/40 transition-all duration-300">
+            <div class="aspect-[4/3] relative flex items-center justify-center p-6 bg-surface-container-low border-b border-white/5">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#131515] to-transparent z-10"></div>
+                <div class="w-full h-full border border-dashed border-white/20 rounded-xl flex flex-col items-center justify-center opacity-50 relative z-0 group-hover:scale-105 transition-transform duration-500 bg-gradient-to-tl from-[#007FFF]/5 to-transparent">
+                   <span class="material-symbols-outlined text-4xl mb-2 text-[#007FFF]">precision_manufacturing</span>
+                   <span class="text-xs font-['Inter'] uppercase tracking-widest text-white">Модель Серии V</span>
+                </div>
+            </div>
+            <div class="p-8 pt-6 relative z-20">
+                <h3 class="text-2xl font-headline font-bold text-white mb-2 group-hover:text-[#007FFF] transition-colors">Серия INNOS-V</h3>
+                <p class="text-on-surface-variant text-sm mb-6 h-10">Высокоскоростные 3-осевые вертикальные фрезеры</p>
+                <div class="space-y-3 font-['Inter'] text-sm text-[#C1C6D7] mb-8">
+                    <div class="flex justify-between border-b border-white/5 pb-2"><span>Стол</span><span class="text-white font-medium">1200 × 600 мм</span></div>
+                    <div class="flex justify-between border-b border-white/5 pb-2"><span>Шпиндель</span><span class="text-white font-medium">12 000 об/мин</span></div>
+                    <div class="flex justify-between pb-1"><span>Вес станка</span><span class="text-white font-medium">7 200 кг</span></div>
+                </div>
+                <a href="catalog.html" class="w-full flex items-center justify-center text-center border border-white/10 text-white hover:bg-white/10 py-3 rounded-lg font-bold text-sm transition-all duration-300">Спецификация</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Industry Applications -->
+<section class="py-24 border-t border-white/5 relative overflow-hidden bg-black/50">
+    <div class="max-w-7xl mx-auto px-8 relative z-10">
+        <div class="inline-flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 rounded-full mb-4">
+            <span class="material-symbols-outlined text-[#C1C6D7] text-[14px]">domain</span>
+            <span class="text-xs font-bold tracking-widest text-[#C1C6D7] uppercase">Отраслевая экспертиза</span>
+        </div>
+        <h2 class="font-headline text-3xl font-bold text-white mb-12">Решения для тяжелых условий</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:h-[450px]">
+            <!-- Aviation -->
+            <div class="relative group rounded-2xl overflow-hidden cursor-crosshair border border-white/5 min-h-[300px]">
+                <div class="absolute inset-0 bg-[#0A0A0A]"></div>
+                <!-- Gradients -->
+                <div class="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-[#131515] via-[#131515]/90 to-transparent z-10"></div>
+                <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+                <!-- Content -->
+                <div class="absolute bottom-0 left-0 p-8 z-20 w-full">
+                    <span class="material-symbols-outlined text-primary text-5xl mb-4 group-hover:-translate-y-2 transition-transform duration-500 drop-shadow-lg">flight_takeoff</span>
+                    <h3 class="text-xl font-headline font-bold text-white mb-2">Авиастроение</h3>
+                    <div class="h-0 overflow-hidden group-hover:h-24 transition-all duration-700 opacity-0 group-hover:opacity-100">
+                        <p class="text-sm text-[#C1C6D7] mt-2 border-t border-white/10 pt-2 font-['Inter'] leading-relaxed">Обработка жаропрочных сплавов. 5-осевые порталы для фрезерования лопаток турбин.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- OPK -->
+            <div class="relative group rounded-2xl overflow-hidden cursor-crosshair border border-white/5 min-h-[300px]">
+                <div class="absolute inset-0 bg-[#0A0A0A]"></div>
+                <div class="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-[#131515] via-[#131515]/90 to-transparent z-10"></div>
+                <div class="absolute inset-0 bg-tertiary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+                <div class="absolute bottom-0 left-0 p-8 z-20 w-full">
+                    <span class="material-symbols-outlined text-tertiary text-5xl mb-4 group-hover:-translate-y-2 transition-transform duration-500 drop-shadow-lg">security</span>
+                    <h3 class="text-xl font-headline font-bold text-white mb-2">Оборонная промышленность</h3>
+                    <div class="h-0 overflow-hidden group-hover:h-24 transition-all duration-700 opacity-0 group-hover:opacity-100">
+                        <p class="text-sm text-[#C1C6D7] mt-2 border-t border-white/10 pt-2 font-['Inter'] leading-relaxed">Бесперебойная работа в 3 смены. Гарантированный сервис и полная импортонезависимость.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Oil & Gas -->
+            <div class="relative group rounded-2xl overflow-hidden cursor-crosshair border border-white/5 min-h-[300px]">
+                <div class="absolute inset-0 bg-[#0A0A0A]"></div>
+                <div class="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-[#131515] via-[#131515]/90 to-transparent z-10"></div>
+                <div class="absolute inset-0 bg-[#007FFF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+                <div class="absolute bottom-0 left-0 p-8 z-20 w-full">
+                    <span class="material-symbols-outlined text-[#007FFF] text-5xl mb-4 group-hover:-translate-y-2 transition-transform duration-500 drop-shadow-lg">oil_barrel</span>
+                    <h3 class="text-xl font-headline font-bold text-white mb-2">Нефтегазовый комплекс</h3>
+                    <div class="h-0 overflow-hidden group-hover:h-24 transition-all duration-700 opacity-0 group-hover:opacity-100">
+                        <p class="text-sm text-[#C1C6D7] mt-2 border-t border-white/10 pt-2 font-['Inter'] leading-relaxed">Глубокое сверление и токарно-карусельная обработка гигантских деталей запорной арматуры.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Machinery -->
+            <div class="relative group rounded-2xl overflow-hidden cursor-crosshair border border-white/5 min-h-[300px]">
+                <div class="absolute inset-0 bg-[#0A0A0A]"></div>
+                <div class="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-[#131515] via-[#131515]/90 to-transparent z-10"></div>
+                <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+                <div class="absolute bottom-0 left-0 p-8 z-20 w-full">
+                    <span class="material-symbols-outlined text-white text-5xl mb-4 group-hover:-translate-y-2 transition-transform duration-500 drop-shadow-lg">manufacturing</span>
+                    <h3 class="text-xl font-headline font-bold text-white mb-2">Приборостроение</h3>
+                    <div class="h-0 overflow-hidden group-hover:h-24 transition-all duration-700 opacity-0 group-hover:opacity-100">
+                        <p class="text-sm text-[#C1C6D7] mt-2 border-t border-white/10 pt-2 font-['Inter'] leading-relaxed">Сверхвысокоскоростные шпиндели для точнейшей фрезеровки алюминиевых корпусов и плат.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Timeline / Deal Lifecycle -->
+<section class="py-24 px-8 max-w-7xl mx-auto border-t border-white/5">
+    <div class="text-center mb-16">
+        <h2 class="font-headline text-3xl font-bold text-white mb-4">От чертежа до серийной партии</h2>
+        <p class="text-on-surface-variant text-sm text-balance">Мы берем на себя все этапы инжиниринга: вы получаете не станок, а готовую технологию.</p>
+    </div>
+    
+    <div class="relative">
+        <div class="hidden md:block absolute top-[25px] left-8 right-8 h-[2px] bg-white/5 z-0"></div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="relative z-10 bg-transparent text-center group">
+                <div class="w-12 h-12 rounded-full bg-[#131515] border border-white/10 text-[#C1C6D7] flex items-center justify-center font-bold font-headline mx-auto mb-6 group-hover:bg-primary group-hover:text-[#131515] group-hover:border-primary transition-all duration-300">1</div>
+                <h4 class="text-white font-bold mb-3 text-lg">Аудит и ТЗ</h4>
+                <p class="text-sm text-on-surface-variant max-w-[200px] mx-auto leading-relaxed">Изучение ваших чертежей, подбор инструмента и расчет тайминга обработки.</p>
+            </div>
+            
+            <div class="relative z-10 bg-transparent text-center group">
+                <div class="w-12 h-12 rounded-full bg-[#131515] border border-white/10 text-[#C1C6D7] flex items-center justify-center font-bold font-headline mx-auto mb-6 group-hover:bg-tertiary group-hover:text-[#131515] group-hover:border-tertiary transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0)] group-hover:shadow-[0_0_15px_rgba(206,220,186,0.3)]">2</div>
+                <h4 class="text-white font-bold mb-3 text-lg">Производство</h4>
+                <p class="text-sm text-on-surface-variant max-w-[200px] mx-auto leading-relaxed">Сборка станка на нашем заводе от 30 дней. Лазерная юстировка осей.</p>
+            </div>
+            
+            <div class="relative z-10 bg-transparent text-center group">
+                <div class="w-12 h-12 rounded-full bg-[#131515] border border-white/10 text-[#C1C6D7] flex items-center justify-center font-bold font-headline mx-auto mb-6 group-hover:bg-white group-hover:text-[#131515] group-hover:border-white transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0)] group-hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">3</div>
+                <h4 class="text-white font-bold mb-3 text-lg">ПНР и Обучение</h4>
+                <p class="text-sm text-on-surface-variant max-w-[200px] mx-auto leading-relaxed">Установка на виброопоры. Изготовление текстовой детали. Инструктаж.</p>
+            </div>
+            
+            <div class="relative z-10 bg-transparent text-center group">
+                <div class="w-12 h-12 rounded-full bg-[#131515] border border-white/10 text-[#C1C6D7] flex items-center justify-center font-bold font-headline mx-auto mb-6 group-hover:bg-[#007FFF] group-hover:text-white group-hover:border-[#007FFF] transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0)] group-hover:shadow-[0_0_15px_rgba(0,127,255,0.3)]">4</div>
+                <h4 class="text-white font-bold mb-3 text-lg">SLA Поддержка</h4>
+                <p class="text-sm text-on-surface-variant max-w-[200px] mx-auto leading-relaxed">Гарантия до 36 мес. Поставка ЗИП и выезд мастеров за 24 часа по РФ.</p>
+            </div>
+        </div>
     </div>
 </section>
 <!-- Features Bento Grid -->
@@ -196,9 +384,9 @@
 <div class="md:col-span-2 glass-card rounded-xl p-10 border border-white/5 relative overflow-hidden group">
 <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-primary/5 rounded-full blur-[100px] group-hover:bg-primary/10 transition-colors"></div>
 <span class="material-symbols-outlined text-primary text-5xl mb-6">precision_manufacturing</span>
-<h3 class="text-3xl font-headline font-bold text-white mb-4">27 лет опыта</h3>
+<h3 class="text-3xl font-headline font-bold text-white mb-4">Мощность, которая приносит прибыль</h3>
 <p class="text-on-surface-variant leading-relaxed max-w-md">
-                    Надежный поставщик металлообрабатывающего оборудования. Гарантийное обслуживание станков, продажа ЧПУ в лизинг и внедрение программ "под ключ". 
+                    Оборудование, созданное для максимизации съема металла за единицу времени. Высочайшая жесткость направляющих скольжения снижает ваши расходы на сменный режущий инструмент до 30%.
                 </p>
 <div class="mt-8 flex items-baseline space-x-2">
 <span class="text-5xl font-headline font-bold text-white">450+</span>
@@ -215,18 +403,26 @@
 </div>
 <!-- Small Feature 2 -->
 <div class="glass-card rounded-xl p-10 border border-white/5 hover:border-primary/20 transition-all">
-<span class="material-symbols-outlined text-primary text-4xl mb-6">bolt</span>
-<h3 class="text-2xl font-headline font-bold text-white mb-4">Энергоэффективность</h3>
+<span class="material-symbols-outlined text-primary text-4xl mb-6">layers</span>
+<h3 class="text-2xl font-headline font-bold text-white mb-4">Литье СЧ35/СЧ40</h3>
 <p class="text-on-surface-variant text-sm leading-relaxed">
-                    Снижение энергопотребления до 30% за счет интеллектуального управления приводами и рекуперации энергии.
+                    Гарантия жесткости на 20 лет. Литые чугунные станины с естественным старением исключают вибрации при обработке жаропрочных сплавов.
                 </p>
 </div>
 <!-- Small Feature 3 -->
 <div class="glass-card rounded-xl p-10 border border-white/5 hover:border-primary/20 transition-all">
 <span class="material-symbols-outlined text-primary text-4xl mb-6">verified</span>
-<h3 class="text-2xl font-headline font-bold text-white mb-4">Микронная точность</h3>
+<h3 class="text-2xl font-headline font-bold text-white mb-4">Точность: ±0.002 мм</h3>
 <p class="text-on-surface-variant text-sm leading-relaxed">
-                    Стабильность геометрических параметров на протяжении всего срока эксплуатации благодаря термокомпенсации.
+                    Прецизионные ШВП и линейные направляющие 45-го размера. Стабильность геометрии подтверждается лазерным интерферометром.
+                </p>
+</div>
+<!-- Small Feature 4 (Закрывает дыру в сетке) -->
+<div class="glass-card rounded-xl p-10 border border-white/5 hover:border-primary/20 transition-all">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">inventory_2</span>
+<h3 class="text-2xl font-headline font-bold text-white mb-4">Наличие ЗИП в РФ</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                    Федеральный склад запасных частей и шпиндельных узлов. Выезд сервисной бригады в течение 24 часов на объект в РФ.
                 </p>
 </div>
 <!-- Long Feature -->
@@ -245,24 +441,24 @@
 <section class="bg-surface-container-low py-32 relative overflow-hidden">
 <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 <div>
-<h2 class="font-headline text-4xl font-bold text-white mb-8 tracking-tight">Инженерное совершенство в каждой детали</h2>
+<h2 class="font-headline text-4xl font-bold text-white mb-8 tracking-tight">Компоненты промышленного класса</h2>
 <div class="space-y-12">
 <div class="flex gap-6">
 <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg">
-<span class="material-symbols-outlined text-primary">settings_suggest</span>
+<span class="material-symbols-outlined text-primary">memory</span>
 </div>
 <div>
-<h4 class="text-white font-bold mb-2">Адаптивное управление</h4>
-<p class="text-on-surface-variant text-sm leading-relaxed">Система ЧПУ автоматически подстраивает режимы резания в зависимости от состояния инструмента и материала заготовки.</p>
+<h4 class="text-white font-bold mb-2">ЧПУ MX Engine (Дискретность 0.1 мкм)</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Замкнутый контур позиционирования по оптическим линейкам. Прямая поддержка 5-осевой интерполяции и кинематики RTCP.</p>
 </div>
 </div>
 <div class="flex gap-6">
 <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg">
-<span class="material-symbols-outlined text-primary">layers</span>
+<span class="material-symbols-outlined text-primary">cyclone</span>
 </div>
 <div>
-<h4 class="text-white font-bold mb-2">Монолитная архитектура</h4>
-<p class="text-on-surface-variant text-sm leading-relaxed">Массивные чугунные станины с высоким демпфированием вибраций обеспечивают исключительное качество поверхности.</p>
+<h4 class="text-white font-bold mb-2">Шпиндели 12 000 - 24 000 об/мин</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Мотор-шпиндели с керамическими подшипниками и жидкостным охлаждением для черновой и чистовой обработки титана и закаленных сталей.</p>
 </div>
 </div>
 </div>
@@ -333,69 +529,85 @@
     </div>
 </section>
 
-<!-- SEO Text Block -->
-<section class="py-16 px-8 max-w-7xl mx-auto border-t border-white/5">
-    <div class="text-justify text-xs text-on-surface-variant/40 leading-relaxed font-['Inter'] space-y-4">
-        <p>
-            Компания «Станки-Иннос» — надежный производитель металлообрабатывающего оборудования в СНГ. Наш приоритет: разработка, производство и продажа высокоточных станков с ЧПУ, токарных станков по металлу, многоцелевых обрабатывающих агрегатов. Мы занимаемся не только поставкой, но и обеспечиваем профессиональное сервисное обслуживание, настройку пусконаладки, а также предоставляем возможность купить станки в лизинг для модернизации промышленных мощностей.
-        </p>
-        <p>
-            В каталоге нашей продукции представлены промышленные 5-осевые фрезерные центры, сверхточные горизонтально-расточные станки и решения для комплексной автоматизации цехов. Ищете, где выгодно купить фрезерный станок с ЧПУ напрямую у изготовителя? Оставьте заявку, и инженеры свяжутся с вами для подбора технологического решения "под ключ". Мы гарантируем высокую надежность, качество узловой сборки и микронную точность каждого станка нашей компании.
-        </p>
+<!-- Company in Numbers -->
+<section class="py-20 px-8 max-w-7xl mx-auto border-t border-white/5">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:divide-x divide-white/5">
+        <div class="px-4 md:px-6 text-center">
+            <div class="text-4xl font-headline font-bold text-primary mb-2">15 000 м²</div>
+            <div class="text-sm text-on-surface-variant">Производственные площади</div>
+        </div>
+        <div class="px-4 md:px-6 text-center">
+            <div class="text-4xl font-headline font-bold text-primary mb-2">14 дней</div>
+            <div class="text-sm text-on-surface-variant">Средний срок ПНР</div>
+        </div>
+        <div class="px-4 md:px-6 text-center">
+            <div class="text-4xl font-headline font-bold text-primary mb-2">24/7</div>
+            <div class="text-sm text-on-surface-variant">Сервисная поддержка</div>
+        </div>
+        <div class="px-4 md:px-6 text-center">
+            <div class="text-4xl font-headline font-bold text-primary mb-2">80+</div>
+            <div class="text-sm text-on-surface-variant">Инженеров в R&D</div>
+        </div>
     </div>
 </section>
 
 <!-- Footer -->
-<footer class="w-full pt-20 pb-10 px-8 bg-[#131313]">
+<footer class="w-full pt-20 pb-10 px-8 border-t border-white/5 bg-[#131313] mt-10">
 <div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto">
 <div class="col-span-1 md:col-span-1">
-<span class="text-xl font-black text-white mb-6 block font-headline">СТАНКИ-ИННОС</span>
-<p class="font-['Inter'] text-sm text-[#C1C6D7] leading-relaxed mb-6">
-                    Проектирование и производство высокоточных металлообрабатывающих центров. Инновации для суверенитета промышленности.
-                </p>
-<div class="flex space-x-4">
-<a class="text-[#C1C6D7] hover:text-[#007FFF] transition-colors" href="#">
-<span class="material-symbols-outlined">share</span>
-</a>
-<a class="text-[#C1C6D7] hover:text-[#007FFF] transition-colors" href="#">
-<span class="material-symbols-outlined">hub</span>
-</a>
+<span class="text-xl font-black text-white mb-6 block font-headline tracking-widest">СТАНКИ-ИННОС</span>
+<ul class="space-y-4 font-['Inter'] text-sm text-[#C1C6D7] mb-6">
+    <li class="flex items-start">
+        <span class="material-symbols-outlined text-[18px] mr-2 text-primary">location_on</span>
+        123112, г. Москва, ул. Пресненская наб., д. 12<br/>Производство: МО, Заводская 1
+    </li>
+    <li class="flex items-center">
+        <span class="material-symbols-outlined text-[18px] mr-2 text-primary">call</span>
+        <a href="tel:88005004030" class="hover:text-white transition-colors">8 (800) 500-40-30</a>
+    </li>
+    <li class="flex items-center">
+        <span class="material-symbols-outlined text-[18px] mr-2 text-primary">mail</span>
+        <a href="mailto:sales@stanki-innos.ru" class="hover:text-white transition-colors">sales@stanki-innos.ru</a>
+    </li>
+</ul>
+<div class="text-xs text-on-surface-variant/60 font-['Inter']">
+    ООО "Станки-Иннос"<br/>
+    ИНН 7701234567 • КПП 770101001<br/>
+    ОГРН 1237700012345
 </div>
 </div>
 <div>
-<h4 class="text-white font-bold mb-6 text-sm uppercase tracking-widest">Продукция</h4>
+<h4 class="text-white font-bold mb-6 text-sm uppercase tracking-widest">Оборудование</h4>
 <ul class="space-y-4 font-['Inter'] text-sm text-[#C1C6D7]">
-<li><a class="hover:text-[#007FFF] transition-colors" href="#">5-осевые центры</a></li>
-<li><a class="hover:text-[#007FFF] transition-colors" href="#">Токарные станки</a></li>
-<li><a class="hover:text-[#007FFF] transition-colors" href="#">Фрезерные станки</a></li>
-<li><a class="hover:text-[#007FFF] transition-colors" href="#">Системы ЧПУ</a></li>
+<li><a class="hover:text-primary transition-colors" href="catalog.html">5-осевые центры</a></li>
+<li><a class="hover:text-primary transition-colors" href="catalog.html">Токарные станки с ЧПУ</a></li>
+<li><a class="hover:text-primary transition-colors" href="catalog.html">Горизонтально-расточные</a></li>
+<li><a class="hover:text-primary transition-colors" href="catalog.html">Системы ЧПУ MX Engine</a></li>
 </ul>
 </div>
 <div>
-<h4 class="text-white font-bold mb-6 text-sm uppercase tracking-widest">Компания</h4>
+<h4 class="text-white font-bold mb-6 text-sm uppercase tracking-widest">Клиентам</h4>
 <ul class="space-y-4 font-['Inter'] text-sm text-[#C1C6D7]">
-<li><a class="hover:text-[#007FFF] transition-colors" href="about.html">О нас</a></li>
-<li><a class="hover:text-[#007FFF] transition-colors" href="contacts.html">Контакты</a></li>
-<li><a class="hover:text-[#007FFF] transition-colors" href="#">Сервис</a></li>
-<li><a class="hover:text-[#007FFF] transition-colors" href="#">Карта сайта</a></li>
+<li><a class="hover:text-primary transition-colors" href="about.html">О производстве</a></li>
+<li><a class="hover:text-primary transition-colors" href="contacts.html">Контакты и дилеры</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Сервис и пусконаладка</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Лизинг оборудования</a></li>
 </ul>
 </div>
 <div>
-<h4 class="text-white font-bold mb-6 text-sm uppercase tracking-widest">Подписка</h4>
-<p class="text-xs text-[#C1C6D7] mb-4">Получайте новости о новых разработках первыми.</p>
-<div class="flex">
-<input class="bg-surface-container-high border-none rounded-l-lg text-sm w-full focus:ring-1 focus:ring-primary" placeholder="Email" type="email"/>
-<button class="bg-primary text-on-primary px-4 rounded-r-lg">
-<span class="material-symbols-outlined">arrow_forward</span>
-</button>
+<h4 class="text-white font-bold mb-6 text-sm uppercase tracking-widest">Тех. поддержка</h4>
+<p class="text-sm text-[#C1C6D7] mb-4 leading-relaxed">Круглосуточная горячая линия для клиентов с сервисными контрактами.</p>
+<div class="bg-surface-container-high border border-white/10 rounded-lg p-4 inline-block">
+    <a href="tel:88005004031" class="text-white font-bold block mb-1">8 (800) 500-40-31</a>
+    <span class="text-xs text-primary">help@stanki-innos.ru</span>
 </div>
 </div>
 </div>
-<div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-<span class="font-['Inter'] text-sm text-[#C1C6D7]">© 2024 Станки-Иннос. Промышленное совершенство.</span>
+<div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+<span class="font-['Inter'] text-sm text-on-surface-variant/60">© 2024 ООО "Станки-Иннос". Предложение не является публичной офертой (ст. 437 ГК РФ).</span>
 <div class="flex space-x-6">
-<a class="font-['Inter'] text-sm text-[#C1C6D7] hover:text-white transition-colors" href="#">Политика конфиденциальности</a>
-<a class="font-['Inter'] text-sm text-[#C1C6D7] hover:text-white transition-colors" href="#">Условия использования</a>
+<a class="font-['Inter'] text-sm text-on-surface-variant/60 hover:text-white transition-colors" href="#">Политика конфиденциальности</a>
+<a class="font-['Inter'] text-sm text-on-surface-variant/60 hover:text-white transition-colors" href="#">Лицензиар ЧПУ ПО</a>
 </div>
 </div>
 </footer>
