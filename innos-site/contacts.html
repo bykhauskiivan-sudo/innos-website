@@ -247,45 +247,52 @@
                 <h3 class="text-3xl font-headline font-bold text-white mb-2 relative z-10">Отправьте запрос или ТЗ</h3>
                 <p class="text-on-surface-variant text-sm mb-10 relative z-10">Мы ответим вам в течение 1 рабочего часа с детальным планом.</p>
 
-                <form class="site-form space-y-6 relative z-10">
+                <form id="contactRequestForm" class="site-form space-y-6 relative z-10" novalidate>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2">
-                            <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Имя представителя</label>
-                            <input type="text" class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Пётр Николаевич">
+                            <label for="contactName" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Имя представителя</label>
+                            <input id="contactName" name="contact_name" type="text" required class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Пётр Николаевич">
                         </div>
                         <div class="space-y-2">
-                            <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Организация (ИНН)</label>
-                            <input type="text" class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="ООО Инновация">
+                            <label for="contactCompany" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Организация (ИНН)</label>
+                            <input id="contactCompany" name="contact_company" type="text" required class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="ООО Инновация">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2">
-                            <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Телефон</label>
-                            <input type="tel" class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="+7...">
+                            <label for="contactPhone" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Телефон</label>
+                            <input id="contactPhone" name="contact_phone" type="tel" required class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="+7...">
                         </div>
                         <div class="space-y-2">
-                            <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">E-mail</label>
-                            <input type="email" class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="company@mail.ru">
+                            <label for="contactEmail" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">E-mail</label>
+                            <input id="contactEmail" name="contact_email" type="email" required class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="company@mail.ru">
                         </div>
                     </div>
 
                     <div class="space-y-2">
-                        <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Тип оборудования и описание задачи</label>
-                        <textarea rows="5" class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none" placeholder="Укажите технические требования или прикрепите чертеж..."></textarea>
+                        <label for="contactTask" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Тип оборудования и описание задачи</label>
+                        <textarea id="contactTask" name="contact_task" rows="5" required class="w-full bg-surface-container-highest border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none" placeholder="Укажите технические требования или прикрепите чертеж..."></textarea>
                     </div>
 
-                    <!-- File attach abstract button -->
-                    <div class="border border-dashed border-white/20 rounded-xl p-6 flex flex-col items-center justify-center text-on-surface-variant hover:text-white hover:border-primary transition-colors cursor-pointer group">
-                        <span class="material-symbols-outlined mb-2 text-primary group-hover:scale-110 transition-transform">upload_file</span>
-                        <span class="text-sm font-medium">Прикрепить чертеж или ТЗ (до 50 Мб)</span>
+                    <div class="border border-dashed border-white/20 rounded-xl p-6 text-on-surface-variant hover:text-white hover:border-primary transition-colors">
+                        <input id="contactAttachment" name="contact_attachment" type="file" class="sr-only" />
+                        <label for="contactAttachment" class="flex flex-col items-center justify-center cursor-pointer group">
+                            <span class="material-symbols-outlined mb-2 text-primary group-hover:scale-110 transition-transform">upload_file</span>
+                            <span id="contactAttachmentLabel" class="text-sm font-medium">Прикрепить чертеж или ТЗ (до 50 Мб)</span>
+                            <span id="contactAttachmentName" class="text-xs mt-2 text-on-surface-variant/70">Файл не выбран</span>
+                        </label>
                     </div>
 
-                    <div class="pt-4">
-                        <button type="button" class="btn btn-primary w-full sm:w-auto px-12 py-5 bg-primary text-on-primary rounded-xl font-bold uppercase tracking-widest text-sm hover:shadow-[0_0_30px_rgba(171,199,255,0.4)] transition-all active:scale-95 flex justify-center items-center gap-3">
+                    <div class="pt-4 flex flex-col items-start gap-3">
+                        <button id="contactSubmitButton" type="submit" class="btn btn-primary w-full sm:w-auto px-12 py-5 bg-primary text-on-primary rounded-xl font-bold uppercase tracking-widest text-sm hover:shadow-[0_0_30px_rgba(171,199,255,0.4)] transition-all active:scale-95 flex justify-center items-center gap-3">
                             ОТПРАВИТЬ ДАННЫЕ
                             <span class="material-symbols-outlined text-[18px]">send</span>
                         </button>
+                        <a id="contactMailtoFallback" href="#" class="text-xs text-primary hover:text-white transition-colors hidden">
+                            Открыть почтовый клиент вручную
+                        </a>
+                        <p id="contactFormStatus" class="text-xs text-on-surface-variant/70" aria-live="polite"></p>
                     </div>
                     <p class="text-xs text-on-surface-variant/50">Нажимая кнопку, вы соглашаетесь с условиями обработки персональных данных в соответствии с ФЗ-152.</p>
                 </form>
@@ -348,5 +355,210 @@
         </div>
     </div>
 </footer>
+<script>
+(() => {
+  const form = document.getElementById("contactRequestForm");
+  if (!form) {
+    return;
+  }
+
+  const fileInput = document.getElementById("contactAttachment");
+  const fileNameEl = document.getElementById("contactAttachmentName");
+  const statusEl = document.getElementById("contactFormStatus");
+  const fallbackLink = document.getElementById("contactMailtoFallback");
+  const submitButton = document.getElementById("contactSubmitButton");
+  const targetEmail = "contact@investstanok.ru";
+  const maxFileSizeBytes = 50 * 1024 * 1024;
+
+  const setStatus = (text, type) => {
+    if (!statusEl) {
+      return;
+    }
+    statusEl.textContent = text;
+    statusEl.classList.remove("text-primary", "text-error", "text-on-surface-variant/70");
+    if (type === "success") {
+      statusEl.classList.add("text-primary");
+    } else if (type === "error") {
+      statusEl.classList.add("text-error");
+    } else {
+      statusEl.classList.add("text-on-surface-variant/70");
+    }
+  };
+
+  const toDateToken = (date) => {
+    const pad = (value) => String(value).padStart(2, "0");
+    const hh = pad(date.getHours());
+    const mm = pad(date.getMinutes());
+    const dd = pad(date.getDate());
+    const mmDate = pad(date.getMonth() + 1);
+    const yyyy = date.getFullYear();
+    return `${hh}:${mm} ${dd}.${mmDate}.${yyyy}`;
+  };
+
+  const toMailtoBody = (payload) => {
+    return [
+      "Новая заявка INNOS",
+      "",
+      `Имя представителя: ${payload.name}`,
+      `Организация (ИНН): ${payload.company}`,
+      `Телефон: ${payload.phone}`,
+      `E-mail: ${payload.email}`,
+      `Задача: ${payload.task}`,
+      `Файл: ${payload.fileName}`
+    ].join("\n");
+  };
+
+  const toBase64Utf8 = (text) => {
+    const bytes = new TextEncoder().encode(text);
+    let binary = "";
+    bytes.forEach((byte) => {
+      binary += String.fromCharCode(byte);
+    });
+    return btoa(binary);
+  };
+
+  const wrapBase64 = (value) => {
+    const chunkSize = 76;
+    const chunks = [];
+    for (let index = 0; index < value.length; index += chunkSize) {
+      chunks.push(value.slice(index, index + chunkSize));
+    }
+    return chunks.join("\r\n");
+  };
+
+  const readFileAsBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = typeof reader.result === "string" ? reader.result : "";
+        const parts = result.split(",");
+        resolve(parts.length > 1 ? parts[1] : "");
+      };
+      reader.onerror = () => reject(new Error("Не удалось прочитать файл"));
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const safeFilename = (name) => {
+    return name.replace(/[^\w.\-() ]+/g, "_");
+  };
+
+  const createEml = async ({ subject, body, file }) => {
+    const boundary = `----=_Part_INNOS_${Date.now()}`;
+    const safeName = safeFilename(file.name);
+    const fileBase64 = await readFileAsBase64(file);
+    const bodyBase64 = toBase64Utf8(body);
+    const contentType = file.type || "application/octet-stream";
+
+    return [
+      `To: ${targetEmail}`,
+      `Subject: ${subject}`,
+      `Date: ${new Date().toUTCString()}`,
+      "MIME-Version: 1.0",
+      `Content-Type: multipart/mixed; boundary="${boundary}"`,
+      "",
+      `--${boundary}`,
+      "Content-Type: text/plain; charset=\"UTF-8\"",
+      "Content-Transfer-Encoding: base64",
+      "",
+      wrapBase64(bodyBase64),
+      "",
+      `--${boundary}`,
+      `Content-Type: ${contentType}; name="${safeName}"`,
+      "Content-Transfer-Encoding: base64",
+      `Content-Disposition: attachment; filename="${safeName}"`,
+      "",
+      wrapBase64(fileBase64),
+      "",
+      `--${boundary}--`,
+      ""
+    ].join("\r\n");
+  };
+
+  const downloadEml = (emlContent, dateToken) => {
+    const normalizedToken = dateToken
+      .replace(/\s+/g, "_")
+      .replace(/[:.]/g, "-");
+    const blob = new Blob([emlContent], { type: "message/rfc822;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `innos-tz-${normalizedToken}.eml`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  };
+
+  if (fileInput && fileNameEl) {
+    fileInput.addEventListener("change", () => {
+      const file = fileInput.files && fileInput.files[0];
+      if (file) {
+        fileNameEl.textContent = `Файл: ${file.name}`;
+      } else {
+        fileNameEl.textContent = "Файл не выбран";
+      }
+    });
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!(fileInput && fileInput.files && fileInput.files[0])) {
+      setStatus("Прикрепите файл с чертежом или ТЗ перед отправкой.", "error");
+      return;
+    }
+
+    if (!form.checkValidity()) {
+      setStatus("Заполните все обязательные поля формы.", "error");
+      return;
+    }
+
+    const file = fileInput.files[0];
+    if (file.size > maxFileSizeBytes) {
+      setStatus("Размер файла превышает 50 Мб. Уменьшите файл и повторите отправку.", "error");
+      return;
+    }
+
+    const formData = new FormData(form);
+    const requestDate = new Date();
+    const dateToken = toDateToken(requestDate);
+    const subject = `innos TZ ${dateToken}`;
+    const payload = {
+      name: String(formData.get("contact_name") || "").trim(),
+      company: String(formData.get("contact_company") || "").trim(),
+      phone: String(formData.get("contact_phone") || "").trim(),
+      email: String(formData.get("contact_email") || "").trim(),
+      task: String(formData.get("contact_task") || "").trim(),
+      fileName: file.name
+    };
+    const body = toMailtoBody(payload);
+    const mailtoHref = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    if (fallbackLink) {
+      fallbackLink.href = mailtoHref;
+      fallbackLink.classList.remove("hidden");
+    }
+
+    try {
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
+      setStatus("Формируем письмо с вложением...", "info");
+      const emlContent = await createEml({ subject, body, file });
+      downloadEml(emlContent, dateToken);
+      setStatus("Черновик письма с вложением сформирован. Откройте скачанный .eml и нажмите Отправить.", "success");
+      window.location.href = mailtoHref;
+    } catch (error) {
+      setStatus("Не удалось сформировать письмо автоматически. Используйте ссылку «Открыть почтовый клиент вручную».", "error");
+      window.location.href = mailtoHref;
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+      }
+    }
+  });
+})();
+</script>
 </body>
 </html>
