@@ -144,6 +144,35 @@
     return true;
   };
 
+  const normalizeInlineText = (value) => String(value || "").replace(/\s+/g, " ").trim();
+
+  const detectEquipmentName = () => {
+    const body = document.body;
+    if (!body || !body.classList.contains("page-product")) {
+      return "";
+    }
+
+    const breadcrumbs = Array.from(
+      document.querySelectorAll("nav[aria-label='Breadcrumb'] [itemprop='name']")
+    );
+    const breadcrumbLast = breadcrumbs.length > 0 ? normalizeInlineText(breadcrumbs[breadcrumbs.length - 1].textContent) : "";
+    const titleText = normalizeInlineText((document.querySelector("main h1") || {}).textContent || "");
+    const combinedText = `${breadcrumbLast} ${titleText}`.trim();
+
+    const modelMatch = combinedText.match(/\b(?:INNOS|ИННОС)\s*[A-ZА-Я]-?\d+[A-ZА-Я0-9-]*\b/i);
+    if (modelMatch && modelMatch[0]) {
+      return normalizeInlineText(modelMatch[0]).slice(0, 120);
+    }
+
+    if (breadcrumbLast) {
+      return breadcrumbLast.slice(0, 120);
+    }
+
+    return titleText.slice(0, 120);
+  };
+
+  const equipmentName = detectEquipmentName();
+
   headers.forEach((header) => {
     const navLinks = Array.from(header.querySelectorAll("nav a[href]"));
     const contactsLink = navLinks.find((link) => /(^|\/)contacts\.html$/i.test(String(link.getAttribute("href") || "")));
@@ -168,7 +197,16 @@
         cta.type = "button";
       }
 
-      const targetUrl = `${contactsHref}#contactRequestForm`;
+      const buildTargetUrl = () => {
+        const url = new URL(contactsHref, window.location.href);
+        if (equipmentName) {
+          url.searchParams.set("equipment", equipmentName);
+        }
+        url.hash = "contactRequestForm";
+        return url.toString();
+      };
+
+      const targetUrl = buildTargetUrl();
       if (cta instanceof HTMLAnchorElement) {
         cta.href = targetUrl;
       }
@@ -201,6 +239,32 @@
         scrollToRequestForm();
       }, 120);
     });
+  }
+})();
+
+(function initContactTaskPrefillFromEquipment() {
+  const form = document.getElementById("contactRequestForm");
+  const taskField = document.getElementById("contactTask");
+  if (!form || !(taskField instanceof HTMLTextAreaElement)) {
+    return;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const equipmentRaw = params.get("equipment");
+  const equipment = String(equipmentRaw || "").replace(/\s+/g, " ").trim();
+  if (!equipment) {
+    return;
+  }
+
+  const prefillText = `Интересует оборудование: ${equipment}.`;
+  const currentValue = String(taskField.value || "").trim();
+  if (currentValue.length === 0) {
+    taskField.value = `${prefillText}\n`;
+    return;
+  }
+
+  if (!currentValue.includes(equipment)) {
+    taskField.value = `${prefillText}\n${currentValue}`;
   }
 })();
 
