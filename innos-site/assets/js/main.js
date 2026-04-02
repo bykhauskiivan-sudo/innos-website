@@ -120,6 +120,90 @@
   });
 })();
 
+(function initHeaderRequestCta() {
+  const headers = Array.from(document.querySelectorAll(".site-header"));
+  if (headers.length === 0) {
+    return;
+  }
+
+  const scrollToRequestForm = () => {
+    const form = document.getElementById("contactRequestForm");
+    if (!form) {
+      return false;
+    }
+
+    form.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    window.setTimeout(() => {
+      const focusTarget = form.querySelector("input, textarea, select, button");
+      if (focusTarget instanceof HTMLElement) {
+        focusTarget.focus({ preventScroll: true });
+      }
+    }, 450);
+
+    return true;
+  };
+
+  headers.forEach((header) => {
+    const navLinks = Array.from(header.querySelectorAll("nav a[href]"));
+    const contactsLink = navLinks.find((link) => /(^|\/)contacts\.html$/i.test(String(link.getAttribute("href") || "")));
+    if (!contactsLink) {
+      return;
+    }
+
+    const contactsHref = String(contactsLink.getAttribute("href") || "").trim();
+    if (!contactsHref) {
+      return;
+    }
+
+    const ctaCandidates = Array.from(header.querySelectorAll(".btn"));
+    ctaCandidates.forEach((cta) => {
+      const label = String(cta.textContent || "").replace(/\s+/g, " ").trim().toLowerCase();
+      if (label !== "получить ткп") {
+        return;
+      }
+
+      cta.setAttribute("data-request-form-trigger", "true");
+      if (cta instanceof HTMLButtonElement) {
+        cta.type = "button";
+      }
+
+      const targetUrl = `${contactsHref}#contactRequestForm`;
+      if (cta instanceof HTMLAnchorElement) {
+        cta.href = targetUrl;
+      }
+
+      cta.addEventListener("click", (event) => {
+        const resolvedContacts = new URL(contactsHref, window.location.href);
+        const current = new URL(window.location.href);
+        const isContactsPage = resolvedContacts.origin === current.origin && resolvedContacts.pathname === current.pathname;
+
+        if (isContactsPage) {
+          event.preventDefault();
+          const scrolled = scrollToRequestForm();
+          if (scrolled) {
+            history.replaceState(null, "", "#contactRequestForm");
+          }
+          return;
+        }
+
+        if (cta instanceof HTMLButtonElement) {
+          event.preventDefault();
+          window.location.href = targetUrl;
+        }
+      });
+    });
+  });
+
+  if (window.location.hash === "#contactRequestForm") {
+    window.requestAnimationFrame(() => {
+      window.setTimeout(() => {
+        scrollToRequestForm();
+      }, 120);
+    });
+  }
+})();
+
 (function initHeroSlider() {
   const hero = document.querySelector("[data-hero]");
   if (!hero) {

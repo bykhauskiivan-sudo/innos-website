@@ -518,6 +518,10 @@ body.page-about .about-hero-title {
   max-width: 14ch;
 }
 
+body.page-contacts #contactRequestForm {
+  scroll-margin-top: calc(var(--site-header-height) + 24px);
+}
+
 @media (max-width: 767px) {
   body.page-about section {
     overflow-x: clip;
