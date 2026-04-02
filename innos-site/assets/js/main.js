@@ -33,6 +33,7 @@
     const panel = document.createElement("div");
     panel.className = "site-mobile-nav-panel";
     panel.setAttribute("data-mobile-nav-panel", "true");
+    panel.setAttribute("aria-hidden", "true");
 
     const linksWrap = document.createElement("div");
     linksWrap.className = "site-mobile-nav-links";
@@ -44,11 +45,18 @@
     });
 
     panel.appendChild(linksWrap);
-    header.appendChild(panel);
+    document.body.appendChild(panel);
     actions.appendChild(toggle);
+
+    const updatePanelPosition = () => {
+      const headerRect = header.getBoundingClientRect();
+      panel.style.top = `${Math.round(headerRect.bottom)}px`;
+    };
 
     const setOpen = (open) => {
       header.classList.toggle("is-mobile-nav-open", open);
+      panel.classList.toggle("is-open", open);
+      panel.setAttribute("aria-hidden", String(!open));
       toggle.setAttribute("aria-expanded", String(open));
       toggle.setAttribute("aria-label", open ? "Закрыть меню" : "Открыть меню");
       const icon = toggle.querySelector(".material-symbols-outlined");
@@ -63,6 +71,7 @@
     };
 
     const openMenu = () => {
+      updatePanelPosition();
       setOpen(true);
       document.body.classList.add("mobile-nav-open");
     };
@@ -88,7 +97,7 @@
       if (!(target instanceof Node)) {
         return;
       }
-      if (!header.contains(target)) {
+      if (!header.contains(target) && !panel.contains(target)) {
         closeMenu();
       }
     });
@@ -102,8 +111,12 @@
     window.addEventListener("resize", () => {
       if (window.innerWidth >= desktopBreakpoint) {
         closeMenu();
+      } else if (header.classList.contains("is-mobile-nav-open")) {
+        updatePanelPosition();
       }
     });
+
+    updatePanelPosition();
   });
 })();
 

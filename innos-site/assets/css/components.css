@@ -24,6 +24,8 @@
 .site-header {
   box-shadow: var(--shadow-nav);
   overflow: visible;
+  height: var(--site-header-height);
+  min-height: var(--site-header-height);
 }
 
 .site-header > div {
@@ -124,20 +126,22 @@
     right: 0;
     width: 100vw;
     z-index: 76;
-    background: rgba(19, 19, 19, 0.3);
-    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    max-height: calc(100dvh - var(--site-header-height));
+    overflow-y: auto;
+    background: rgba(19, 19, 19, 0.7);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow: 0 18px 30px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(18px) saturate(1.4);
     -webkit-backdrop-filter: blur(18px) saturate(1.4);
   }
 
-  .site-header.is-mobile-nav-open .site-mobile-nav-panel {
+  .site-mobile-nav-panel.is-open {
     display: block;
   }
 
   .site-mobile-nav-links {
-    padding: 8px 0 10px;
+    padding: 0;
   }
 
   .site-mobile-nav-links a {
@@ -160,6 +164,11 @@
 
   body.mobile-nav-open {
     overflow: hidden;
+  }
+
+  .site-header.is-mobile-nav-open {
+    height: var(--site-header-height) !important;
+    min-height: var(--site-header-height) !important;
   }
 }
 
