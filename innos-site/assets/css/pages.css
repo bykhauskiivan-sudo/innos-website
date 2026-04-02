@@ -508,3 +508,24 @@ body.page-news .news-hero__note {
     transform: scaleX(1);
   }
 }
+
+body.page-about,
+body.page-about main {
+  overflow-x: clip;
+}
+
+body.page-about .about-hero-title {
+  max-width: 14ch;
+}
+
+@media (max-width: 767px) {
+  body.page-about section {
+    overflow-x: clip;
+  }
+
+  body.page-about .about-hero-title {
+    font-size: clamp(2rem, 10.8vw, 3.2rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+}
