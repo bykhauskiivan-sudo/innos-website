@@ -326,7 +326,7 @@ body.page-home .hero-mz__counter {
 
 @media (max-width: 900px) {
   body.page-home .hero-mz__content {
-    padding: 120px 20px 330px;
+    padding: 104px 20px 330px;
   }
 
   body.page-home .hero-mz__controls {
@@ -353,7 +353,7 @@ body.page-home .hero-mz__counter {
 
 @media (max-width: 640px) {
   body.page-home .hero-mz__content {
-    padding: 110px 14px 310px;
+    padding: 88px 14px 310px;
   }
 
   body.page-home .hero-mz__controls {

@@ -49,17 +49,21 @@
 }
 
 @media (max-width: 767px) {
+  .site-header {
+    --mobile-nav-open-height: 236px;
+  }
+
   .site-header > div {
     position: relative;
     padding-left: 14px !important;
     padding-right: 14px !important;
-    height: 72px !important;
-    gap: 8px;
+    height: 66px !important;
+    gap: 7px;
   }
 
   .site-header > div > a {
-    max-width: 118px;
-    font-size: 16px !important;
+    max-width: 110px;
+    font-size: 15px !important;
     line-height: 1.05;
   }
 
@@ -70,8 +74,8 @@
 
   .site-header > div > .flex.items-center.space-x-6 > .btn {
     margin-right: 50px;
-    padding: 8px 10px !important;
-    font-size: 13px !important;
+    padding: 7px 9px !important;
+    font-size: 12px !important;
     letter-spacing: 0.01em !important;
   }
 
@@ -99,7 +103,8 @@
     width: auto;
     max-height: 0;
     z-index: 70;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     background: rgba(19, 19, 19, 0.96);
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -113,7 +118,7 @@
   }
 
   .site-header.is-mobile-nav-open .site-mobile-nav-panel {
-    max-height: var(--mobile-nav-open-height, 230px);
+    max-height: min(58vh, var(--mobile-nav-open-height, 236px));
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
@@ -124,7 +129,7 @@
   }
 
   body.mobile-nav-open .site-header + * {
-    margin-top: var(--mobile-nav-open-height, 230px);
+    margin-top: min(58vh, var(--mobile-nav-open-height, 236px));
   }
 
   .site-mobile-nav-links {
