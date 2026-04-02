@@ -34,6 +34,25 @@
   min-height: var(--site-header-height);
 }
 
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 0 0 auto;
+  width: min(180px, 24vw);
+  height: 100%;
+  max-width: 180px;
+  margin-right: 8px;
+}
+
+.site-brand-logo {
+  display: block;
+  width: 100%;
+  max-height: 34px;
+  object-fit: contain;
+  object-position: left center;
+}
+
 .site-header nav a,
 .site-mobile-nav-links a,
 .site-header .btn {
@@ -85,10 +104,14 @@
     gap: 8px;
   }
 
-  .site-header > div > a {
-    max-width: 118px;
-    font-size: 15px !important;
-    line-height: 1.05;
+  .site-brand {
+    width: 108px;
+    max-width: 108px;
+    margin-right: 2px;
+  }
+
+  .site-brand-logo {
+    max-height: 26px;
   }
 
   .site-header > div > .flex.items-center.space-x-6 {
