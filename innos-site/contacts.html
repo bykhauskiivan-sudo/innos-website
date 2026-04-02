@@ -171,7 +171,7 @@
                 <h3 class="text-2xl sm:text-3xl font-headline font-bold text-white mb-2 relative z-10">Отправьте запрос или ТЗ</h3>
                 <p class="text-on-surface-variant text-sm mb-8 md:mb-10 relative z-10">Мы ответим вам в течение 1 рабочего часа с детальным планом.</p>
 
-                <form id="contactRequestForm" class="site-form space-y-6 relative z-10" data-mail-api="/api/send-request" novalidate>
+                <form id="contactRequestForm" class="site-form space-y-6 relative z-10" data-mail-api="https://formsubmit.co/ajax/contact@investstanok.ru" novalidate>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label for="contactName" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Имя представителя</label>
@@ -213,9 +213,6 @@
                             ОТПРАВИТЬ ДАННЫЕ
                             <span class="material-symbols-outlined text-[18px]">send</span>
                         </button>
-                        <a id="contactMailtoFallback" href="#" class="text-xs text-primary hover:text-white transition-colors hidden">
-                            Открыть почтовый клиент
-                        </a>
                         <p id="contactFormStatus" class="text-xs text-on-surface-variant/70" aria-live="polite"></p>
                     </div>
                     <p class="text-xs text-on-surface-variant/50">Нажимая кнопку, вы соглашаетесь с условиями обработки персональных данных в соответствии с ФЗ-152.</p>
@@ -366,9 +363,7 @@
   const fileInput = document.getElementById("contactAttachment");
   const fileNameEl = document.getElementById("contactAttachmentName");
   const statusEl = document.getElementById("contactFormStatus");
-  const fallbackLink = document.getElementById("contactMailtoFallback");
   const submitButton = document.getElementById("contactSubmitButton");
-  const targetEmail = "contact@investstanok.ru";
   const mailApiEndpoint = String(form.getAttribute("data-mail-api") || "").trim();
   const maxFileSizeBytes = 50 * 1024 * 1024;
 
@@ -397,104 +392,12 @@
     return `${hh}:${mm} ${dd}.${mmDate}.${yyyy}`;
   };
 
-  const toMailtoBody = (payload) => {
-    return [
-      "Новая заявка INNOS",
-      "",
-      `Имя представителя: ${payload.name}`,
-      `Организация (ИНН): ${payload.company}`,
-      `Телефон: ${payload.phone}`,
-      `E-mail: ${payload.email}`,
-      `Задача: ${payload.task}`,
-      `Файл: ${payload.fileName}`
-    ].join("\n");
-  };
-
-  const toBase64Utf8 = (text) => {
-    const bytes = new TextEncoder().encode(text);
-    let binary = "";
-    bytes.forEach((byte) => {
-      binary += String.fromCharCode(byte);
-    });
-    return btoa(binary);
-  };
-
-  const wrapBase64 = (value) => {
-    const chunkSize = 76;
-    const chunks = [];
-    for (let index = 0; index < value.length; index += chunkSize) {
-      chunks.push(value.slice(index, index + chunkSize));
-    }
-    return chunks.join("\r\n");
-  };
-
-  const readFileAsBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const result = typeof reader.result === "string" ? reader.result : "";
-        const parts = result.split(",");
-        resolve(parts.length > 1 ? parts[1] : "");
-      };
-      reader.onerror = () => reject(new Error("Не удалось прочитать файл"));
-      reader.readAsDataURL(file);
-    });
-  };
-
-  const safeFilename = (name) => {
-    return name.replace(/[^\w.\-() ]+/g, "_");
-  };
-
-  const createEml = async ({ subject, body, file }) => {
-    const bodyBase64 = toBase64Utf8(body);
-
-    if (!file) {
-      return [
-        `To: ${targetEmail}`,
-        `Subject: ${subject}`,
-        `Date: ${new Date().toUTCString()}`,
-        "MIME-Version: 1.0",
-        "Content-Type: text/plain; charset=\"UTF-8\"",
-        "Content-Transfer-Encoding: base64",
-        "",
-        wrapBase64(bodyBase64),
-        ""
-      ].join("\r\n");
-    }
-
-    const boundary = `----=_Part_INNOS_${Date.now()}`;
-    const safeName = safeFilename(file.name);
-    const fileBase64 = await readFileAsBase64(file);
-    const contentType = file.type || "application/octet-stream";
-
-    return [
-      `To: ${targetEmail}`,
-      `Subject: ${subject}`,
-      `Date: ${new Date().toUTCString()}`,
-      "MIME-Version: 1.0",
-      `Content-Type: multipart/mixed; boundary="${boundary}"`,
-      "",
-      `--${boundary}`,
-      "Content-Type: text/plain; charset=\"UTF-8\"",
-      "Content-Transfer-Encoding: base64",
-      "",
-      wrapBase64(bodyBase64),
-      "",
-      `--${boundary}`,
-      `Content-Type: ${contentType}; name="${safeName}"`,
-      "Content-Transfer-Encoding: base64",
-      `Content-Disposition: attachment; filename="${safeName}"`,
-      "",
-      wrapBase64(fileBase64),
-      "",
-      `--${boundary}--`,
-      ""
-    ].join("\r\n");
-  };
-
   const sendViaApi = async (requestData) => {
     const response = await fetch(mailApiEndpoint, {
       method: "POST",
+      headers: {
+        Accept: "application/json"
+      },
       body: requestData
     });
 
@@ -505,28 +408,20 @@
       responseData = null;
     }
 
-    if (!response.ok || !responseData || responseData.ok !== true) {
+    const isSuccess =
+      response.ok &&
+      responseData &&
+      (responseData.ok === true || String(responseData.success).toLowerCase() === "true");
+
+    if (!isSuccess) {
       const errorMessage =
         responseData && typeof responseData.error === "string"
           ? responseData.error
+          : responseData && typeof responseData.message === "string"
+            ? responseData.message
           : `HTTP ${response.status}`;
       throw new Error(errorMessage);
     }
-  };
-
-  const downloadEml = (emlContent, dateToken) => {
-    const normalizedToken = dateToken
-      .replace(/\s+/g, "_")
-      .replace(/[:.]/g, "-");
-    const blob = new Blob([emlContent], { type: "message/rfc822;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `innos-tz-${normalizedToken}.eml`;
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(url);
   };
 
   if (fileInput && fileNameEl) {
@@ -542,6 +437,11 @@
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+
+    if (!mailApiEndpoint) {
+      setStatus("Сервис отправки не настроен. Свяжитесь с администратором сайта.", "error");
+      return;
+    }
 
     if (!form.checkValidity()) {
       setStatus("Заполните все обязательные поля формы.", "error");
@@ -566,53 +466,44 @@
       task: String(formData.get("contact_task") || "").trim(),
       fileName: file ? file.name : "не прикреплен"
     };
-    const body = toMailtoBody(payload);
-    const mailtoHref = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    const message = [
+      "Новая заявка INNOS",
+      "",
+      `Имя представителя: ${payload.name}`,
+      `Организация (ИНН): ${payload.company}`,
+      `Телефон: ${payload.phone}`,
+      `E-mail: ${payload.email}`,
+      `Задача: ${payload.task}`,
+      `Файл: ${payload.fileName}`
+    ].join("\n");
+
     const requestData = new FormData();
-    requestData.append("contact_name", payload.name);
-    requestData.append("contact_company", payload.company);
-    requestData.append("contact_phone", payload.phone);
-    requestData.append("contact_email", payload.email);
-    requestData.append("contact_task", payload.task);
+    requestData.append("_subject", subject);
+    requestData.append("_captcha", "false");
+    requestData.append("name", payload.name);
+    requestData.append("email", payload.email);
+    requestData.append("company", payload.company);
+    requestData.append("phone", payload.phone);
+    requestData.append("task", payload.task);
+    requestData.append("message", message);
     if (file) {
-      requestData.append("contact_attachment", file);
+      requestData.append("attachment", file);
     }
 
     try {
       if (submitButton) {
         submitButton.disabled = true;
       }
-      if (fallbackLink) {
-        fallbackLink.href = mailtoHref;
-        fallbackLink.classList.add("hidden");
+      setStatus("Отправляем заявку...", "info");
+      await sendViaApi(requestData);
+      setStatus("Заявка отправлена. Мы свяжемся с вами в течение 1 рабочего часа.", "success");
+      form.reset();
+      if (fileNameEl) {
+        fileNameEl.textContent = "Файл не прикреплен";
       }
-
-      if (mailApiEndpoint) {
-        try {
-          setStatus("Отправляем заявку через Яндекс Почту...", "info");
-          await sendViaApi(requestData);
-          setStatus("Заявка отправлена. Мы свяжемся с вами в течение 1 рабочего часа.", "success");
-          form.reset();
-          if (fileNameEl) {
-            fileNameEl.textContent = "Файл не прикреплен";
-          }
-          return;
-        } catch (apiError) {
-          setStatus("Автоотправка временно недоступна. Формируем резервный .eml...", "info");
-        }
-      }
-
-      if (fallbackLink) {
-        fallbackLink.classList.remove("hidden");
-      }
-      const emlContent = await createEml({ subject, body, file });
-      downloadEml(emlContent, dateToken);
-      setStatus("Черновик письма с вложением сформирован. Откройте скачанный .eml и нажмите «Отправить» в почтовом клиенте.", "success");
     } catch (error) {
-      setStatus("Не удалось сформировать .eml. Используйте ссылку «Открыть почтовый клиент» ниже.", "error");
-      if (fallbackLink) {
-        fallbackLink.classList.remove("hidden");
-      }
+      setStatus("Не удалось отправить заявку автоматически. Попробуйте еще раз или свяжитесь с нами по телефону.", "error");
     } finally {
       if (submitButton) {
         submitButton.disabled = false;
