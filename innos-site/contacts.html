@@ -433,8 +433,22 @@
       return;
     }
 
+    // Normalize user input before browser validity checks.
+    const textControls = form.querySelectorAll("input[type='text'], input[type='tel'], input[type='email'], textarea");
+    textControls.forEach((control) => {
+      control.value = control.value.trim();
+    });
+
+    const emailField = form.querySelector("#contactEmail");
+    if (emailField && /[А-Яа-яЁё]/.test(emailField.value)) {
+      setStatus("Поле E-mail должно содержать только латинские символы (a-z).", "error");
+      emailField.focus();
+      return;
+    }
+
     if (!form.checkValidity()) {
-      setStatus("Заполните все обязательные поля формы.", "error");
+      form.reportValidity();
+      setStatus("Проверьте обязательные поля и формат E-mail.", "error");
       return;
     }
 
