@@ -19,6 +19,7 @@
 
 .site-header {
   box-shadow: var(--shadow-nav);
+  overflow: visible;
 }
 
 .site-mobile-nav-toggle {
@@ -53,7 +54,7 @@
     position: relative;
     padding-left: 14px !important;
     padding-right: 14px !important;
-    height: 62px !important;
+    height: 56px !important;
     gap: 7px;
   }
 
@@ -70,7 +71,7 @@
 
   .site-header > div > .flex.items-center.space-x-6 > .btn {
     margin-right: 50px;
-    padding: 7px 9px !important;
+    padding: 6px 9px !important;
     font-size: 12px !important;
     letter-spacing: 0.01em !important;
   }
@@ -91,47 +92,38 @@
   }
 
   .site-mobile-nav-panel {
-    display: block;
+    display: none;
     position: absolute;
     top: calc(100% + 1px);
     left: 0;
     right: 0;
-    width: auto;
-    max-height: 0;
+    width: 100%;
     z-index: 70;
-    overflow-x: hidden;
-    overflow-y: auto;
-    background: rgba(19, 19, 19, 0.96);
+    overflow: visible;
+    background: rgba(17, 17, 17, 0.98);
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 0;
     box-shadow: 0 14px 24px rgba(0, 0, 0, 0.28);
-    backdrop-filter: blur(14px);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-6px);
-    transition: max-height 240ms ease, opacity 220ms ease, transform 220ms ease;
+    backdrop-filter: none;
   }
 
   .site-header.is-mobile-nav-open .site-mobile-nav-panel {
-    max-height: 232px;
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
+    display: block;
   }
 
   .site-header + * {
-    transition: margin-top 240ms ease;
+    transition: margin-top 180ms ease;
   }
 
   body.mobile-nav-open .site-header + * {
-    margin-top: 232px;
+    margin-top: var(--mobile-nav-offset, 0px);
   }
 
   .site-mobile-nav-links {
     display: grid;
     gap: 0;
-    padding: 4px 0;
+    padding: 4px 0 6px;
   }
 
   .site-mobile-nav-links a {
@@ -139,6 +131,7 @@
     padding: 9px 16px;
     color: #e5e2e1;
     font-size: 14px;
+    line-height: 1.35;
     font-weight: 600;
     letter-spacing: 0.01em;
     border-top: 1px solid rgba(255, 255, 255, 0.06);

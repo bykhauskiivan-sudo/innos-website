@@ -47,6 +47,16 @@
     header.appendChild(panel);
     actions.appendChild(toggle);
 
+    const setBodyMenuOffset = () => {
+      if (!header.classList.contains("is-mobile-nav-open")) {
+        return;
+      }
+      const panelHeight = Math.ceil(panel.getBoundingClientRect().height);
+      const linksHeight = Math.ceil(linksWrap.getBoundingClientRect().height);
+      const offset = Math.max(panelHeight, linksHeight, 0);
+      document.body.style.setProperty("--mobile-nav-offset", `${offset}px`);
+    };
+
     const setOpen = (open) => {
       header.classList.toggle("is-mobile-nav-open", open);
       toggle.setAttribute("aria-expanded", String(open));
@@ -60,11 +70,14 @@
     const closeMenu = () => {
       setOpen(false);
       document.body.classList.remove("mobile-nav-open");
+      document.body.style.removeProperty("--mobile-nav-offset");
     };
 
     const openMenu = () => {
       setOpen(true);
       document.body.classList.add("mobile-nav-open");
+      setBodyMenuOffset();
+      window.requestAnimationFrame(setBodyMenuOffset);
     };
 
     toggle.addEventListener("click", () => {
@@ -102,8 +115,21 @@
     window.addEventListener("resize", () => {
       if (window.innerWidth >= desktopBreakpoint) {
         closeMenu();
+        return;
+      }
+      if (header.classList.contains("is-mobile-nav-open")) {
+        setBodyMenuOffset();
       }
     });
+
+    if (typeof ResizeObserver !== "undefined") {
+      const observer = new ResizeObserver(() => {
+        if (header.classList.contains("is-mobile-nav-open")) {
+          setBodyMenuOffset();
+        }
+      });
+      observer.observe(linksWrap);
+    }
   });
 })();
 
