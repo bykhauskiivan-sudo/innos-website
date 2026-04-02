@@ -515,7 +515,12 @@ body.page-about main {
 }
 
 body.page-about .about-hero-title {
-  max-width: 14ch;
+  max-width: min(100%, 14ch);
+  width: 100%;
+  font-size: clamp(2.25rem, 6.8vw, 5.25rem);
+  overflow-wrap: anywhere;
+  word-break: normal;
+  text-wrap: balance;
 }
 
 body.page-contacts #contactRequestForm {
@@ -528,8 +533,9 @@ body.page-contacts #contactRequestForm {
   }
 
   body.page-about .about-hero-title {
-    font-size: clamp(2rem, 10.8vw, 3.2rem);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
+    max-width: 100%;
+    font-size: clamp(1.82rem, 8.9vw, 2.68rem);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
   }
 }
