@@ -21,6 +21,112 @@
   box-shadow: var(--shadow-nav);
 }
 
+.site-mobile-nav-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(19, 19, 19, 0.45);
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.site-mobile-nav-toggle:hover {
+  border-color: rgba(171, 199, 255, 0.6);
+  background: rgba(171, 199, 255, 0.15);
+}
+
+.site-mobile-nav-toggle:active {
+  transform: scale(0.98);
+}
+
+.site-mobile-nav-panel {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  body.mobile-nav-open {
+    overflow: hidden;
+  }
+
+  .site-header > div {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    height: 78px !important;
+    gap: 10px;
+  }
+
+  .site-header > div > a {
+    font-size: 20px !important;
+    line-height: 1.05;
+  }
+
+  .site-header > div > .flex.items-center.space-x-6 {
+    gap: 10px;
+  }
+
+  .site-header > div > .flex.items-center.space-x-6 > .btn {
+    padding: 10px 14px !important;
+    font-size: 16px !important;
+    letter-spacing: 0.01em !important;
+  }
+
+  .site-mobile-nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-mobile-nav-panel {
+    display: block;
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    right: 0;
+    z-index: 60;
+    background: rgba(19, 19, 19, 0.96);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(14px);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 220ms ease, transform 220ms ease;
+  }
+
+  .site-header.is-mobile-nav-open .site-mobile-nav-panel {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .site-mobile-nav-links {
+    display: grid;
+    gap: 0;
+    padding: 10px 0;
+  }
+
+  .site-mobile-nav-links a {
+    display: block;
+    padding: 14px 18px;
+    color: #e5e2e1;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .site-mobile-nav-links a:first-child {
+    border-top: 0;
+  }
+
+  .site-mobile-nav-links a:active {
+    background: rgba(171, 199, 255, 0.12);
+  }
+}
+
 .site-footer {
   background: var(--color-background);
 }
