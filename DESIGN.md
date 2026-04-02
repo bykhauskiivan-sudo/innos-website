@@ -36,3 +36,10 @@ The aesthetic is "The Machining Monolith"—a fusion of heavy industry and high-
 *   **Tonal Nesting over Lines (No-Line Rule):** Sections and blocks are demarcated by shifting the background tone from `surface` to `surface-container-low` rather than relying on explicit 1px dividing lines. Lines, when necessary, are incredibly faint (`border-white/5`).
 *   **Whitespace & Clean Room Presentation:** Generous padding and margins (`py-24`, `gap-12`) ensure the UI feels uncluttered, representing high-end machinery in a sterile "clean room".
 *   **Integrated Overlapping:** Elements overlap intentionally. The top navigation bar, featuring a frosted blur (`backdrop-blur-xl`), floats seamlessly over background imagery. High-quality isolated PNG machines cast massive drop-shadows onto abstract blurred glowing orbs (`blur-[120px]`), creating intense focal depth.
+
+## 6. Frontend Implementation Constraints (Offline-First)
+*   **No external UI dependencies:** design must be implemented with local `HTML/CSS/JS` only.
+*   **No external style/runtime CDN:** do not rely on external CSS frameworks/scripts at render time.
+*   **No external web fonts:** font files must be local (`/assets/fonts`) or fallback to system stack.
+*   **Local icon system only:** use inline SVG or local icon sprite (no external icon fonts/CDN).
+*   **Design parity requirement:** if replacing a framework utility class, visual output must remain equivalent.

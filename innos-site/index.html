@@ -9,10 +9,9 @@
 <meta property="og:description" content="Разработка, производство и поставка высокоточных станков с ЧПУ, 5-осевых обрабатывающих центров и токарных станков. Надежный производитель в СНГ."/>
 <meta property="og:type" content="website"/>
 <meta property="og:locale" content="ru_RU"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="assets/js/vendor/tailwind-runtime.js"></script>
+<link href="assets/css/main.css" rel="stylesheet"/>
+<script defer src="assets/js/main.js"></script>
 <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -93,9 +92,9 @@
       }
     </script>
 </head>
-<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-white">
+<body class="page-home bg-background text-on-surface font-body selection:bg-primary-container selection:text-white">
 <!-- TopNavBar -->
-<header class="fixed top-0 w-full z-50 bg-[#1C1B1B]/40 backdrop-blur-xl border-b border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+<header class="site-header fixed top-0 w-full z-50 bg-[#1C1B1B]/40 backdrop-blur-xl border-b border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
 <div class="flex justify-between items-center px-8 h-20 max-w-[1920px] mx-auto">
 <!-- Brand Identity -->
 <a href="index.html" class="text-2xl font-bold tracking-tighter text-white uppercase font-headline">
@@ -121,44 +120,84 @@
         sales@stanki-innos.ru
     </a>
 </div>
-<button class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-bold text-sm tracking-wide hover:brightness-110 active:scale-95 transition-all duration-150 shadow-lg shadow-primary/20">
+<button class="btn btn-primary bg-primary text-on-primary px-6 py-2.5 rounded-xl font-bold text-sm tracking-wide hover:brightness-110 active:scale-95 transition-all duration-150 shadow-lg shadow-primary/20">
     Получить ТКП
 </button>
 </div>
 </div>
 </header>
 <!-- Hero Section -->
-<section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
-<!-- Background "Video" Placeholder with Overlay -->
-<div class="absolute inset-0 z-0">
-<img class="w-full h-full object-cover brightness-[0.4]" data-alt="Cinematic close-up of a precision 5-axis CNC milling machine spindle cutting through metal with cooling fluid spray and dramatic blue sparks" src="assets/index-hero-bg.png"/>
-<div class="absolute inset-0 bg-gradient-to-b from-surface/80 via-transparent to-surface"></div>
-</div>
-<div class="relative z-10 max-w-7xl mx-auto px-8 text-center">
-<div class="inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 px-4 py-1.5 rounded-full mb-8">
-<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
-<span class="text-xs font-bold tracking-widest text-primary uppercase">Machining Transformation (MX)</span>
-</div>
-<h1 class="font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white mb-6 leading-[1.1]">
-                Оборудование для<br/> 
-                <span class="bg-gradient-to-r from-primary to-primary-container bg-clip-text text-transparent">суверенитета</span>
-</h1>
-<p class="text-on-surface-variant text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-                Высокоточные 5-осевые портальные центры, которые окупаются быстрее. Интеграция операций, работа 24/7 и полная локализация сервиса в РФ.
-            </p>
-<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-<a href="catalog.html" class="w-full sm:w-auto px-10 py-4 bg-primary text-on-primary rounded-xl font-bold text-base hover:shadow-[0_0_30px_rgba(171,199,255,0.4)] transition-all active:scale-95 flex items-center justify-center">
-                    Матрица станков
-                </a>
-<a href="contacts.html" class="w-full sm:w-auto px-10 py-4 border border-outline-variant text-primary rounded-xl font-bold text-base hover:bg-white/5 transition-all active:scale-95 flex items-center justify-center">
-                    Расчет проекта
-                </a>
+<section class="hero-mz site-section" data-hero>
+<div class="hero-mz__slides" aria-live="polite">
+<article class="hero-mz__slide is-active" data-hero-slide>
+<img class="hero-mz__image" src="assets/index-hero-bg.png" alt="Высокоточный процесс 5-осевой обработки металла"/>
+<div class="hero-mz__overlay"></div>
+<div class="hero-mz__content u-container-content">
+<div class="hero-mz__text">
+<p class="hero-mz__eyebrow">INNOS MACHINING SOLUTIONS</p>
+<h1 class="hero-mz__title">5-осевые центры для серийного производства в РФ</h1>
+<p class="hero-mz__description">Поставка от 30 дней, ПНР на площадке, локальный сервис 24/7 и контроль геометрии на запуске.</p>
+<div class="hero-mz__actions">
+<a href="contacts.html" class="btn btn-primary hero-mz__btn">Получить ТКП за 1 час</a>
+<a href="catalog.html" class="btn btn-secondary hero-mz__btn">Открыть каталог</a>
 </div>
 </div>
-<!-- Scroll Indicator -->
-<div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center">
-<span class="text-[10px] uppercase tracking-[0.4em] text-on-surface-variant mb-4">Листайте вниз</span>
-<div class="w-px h-12 bg-gradient-to-b from-primary to-transparent"></div>
+</div>
+</article>
+<article class="hero-mz__slide" data-hero-slide>
+<img class="hero-mz__image" src="assets/machine-thumb1.png" alt="Горизонтально-расточной станок в производственном цехе"/>
+<div class="hero-mz__overlay"></div>
+<div class="hero-mz__content u-container-content">
+<div class="hero-mz__text">
+<p class="hero-mz__eyebrow">HEAVY DUTY LINE</p>
+<h2 class="hero-mz__title">Горизонтально-расточные комплексы для тяжелых деталей</h2>
+<p class="hero-mz__description">Шпиндель 130 мм, нагрузка стола до 20 тонн, интеграция в действующую технологическую цепочку без остановки цеха.</p>
+<div class="hero-mz__actions">
+<a href="catalog/horizontal-boring/innos-h130/innos-h130.html" class="btn btn-primary hero-mz__btn">Смотреть INNOS H-130</a>
+<a href="catalog.html" class="btn btn-secondary hero-mz__btn">Сравнить серии</a>
+</div>
+</div>
+</div>
+</article>
+<article class="hero-mz__slide" data-hero-slide>
+<img class="hero-mz__image" src="assets/machine-thumb5.png" alt="Сервисный инженер у тяжелого токарного комплекса"/>
+<div class="hero-mz__overlay"></div>
+<div class="hero-mz__content u-container-content">
+<div class="hero-mz__text">
+<p class="hero-mz__eyebrow">SERVICE NETWORK</p>
+<h2 class="hero-mz__title">Сервис и запуск оборудования по всей России</h2>
+<p class="hero-mz__description">Пусконаладка, обучение операторов, склад ЗИП и регламент SLA для минимизации простоев на критичных участках.</p>
+<div class="hero-mz__actions">
+<a href="contacts.html" class="btn btn-primary hero-mz__btn">Отправить ТЗ инженеру</a>
+<a href="about.html" class="btn btn-secondary hero-mz__btn">Условия сервиса</a>
+</div>
+</div>
+</div>
+</article>
+</div>
+<div class="hero-mz__info glass-card">
+<p class="hero-mz__info-title">Быстрый старт проекта</p>
+<ul class="hero-mz__info-list">
+<li><span>ТКП</span><strong>до 1 часа</strong></li>
+<li><span>Поставка</span><strong>от 30 дней</strong></li>
+<li><span>Сервис</span><strong>24/7 по РФ</strong></li>
+</ul>
+</div>
+<div class="hero-mz__controls u-container-content">
+<div class="hero-mz__nav">
+<button class="hero-mz__arrow" type="button" aria-label="Предыдущий слайд" data-hero-prev>
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="hero-mz__arrow" type="button" aria-label="Следующий слайд" data-hero-next>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="hero-mz__dots" role="tablist" aria-label="Слайды первого экрана">
+<button class="hero-mz__dot is-active" type="button" role="tab" aria-selected="true" aria-label="Слайд 1" data-hero-dot="0"></button>
+<button class="hero-mz__dot" type="button" role="tab" aria-selected="false" aria-label="Слайд 2" data-hero-dot="1"></button>
+<button class="hero-mz__dot" type="button" role="tab" aria-selected="false" aria-label="Слайд 3" data-hero-dot="2"></button>
+</div>
+<div class="hero-mz__counter" data-hero-counter>01 / 03</div>
 </div>
 </section>
 
@@ -556,7 +595,7 @@
 </section>
 
 <!-- Footer -->
-<footer class="w-full pt-20 pb-10 px-8 border-t border-white/5 bg-[#131313] mt-10">
+<footer class="site-footer w-full pt-20 pb-10 px-8 border-t border-white/5 bg-[#131313] mt-10">
 <div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto">
 <div class="col-span-1 md:col-span-1">
 <span class="text-xl font-black text-white mb-6 block font-headline tracking-widest">СТАНКИ-ИННОС</span>

@@ -1,0 +1,51 @@
+.u-container-wide {
+  width: min(100%, var(--container-max-wide));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.u-container-content {
+  width: min(100%, var(--container-max-content));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.u-text-muted {
+  color: var(--color-text-muted);
+}
+
+.u-text-subtle {
+  color: var(--color-text-subtle);
+}
+
+.u-bg-surface {
+  background: var(--color-surface);
+}
+
+.u-bg-surface-low {
+  background: var(--color-surface-low);
+}
+
+.u-border-weak {
+  border: var(--border-weak);
+}
+
+.u-border-medium {
+  border: var(--border-medium);
+}
+
+.u-hidden {
+  display: none !important;
+}
+
+.u-visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

@@ -9,9 +9,9 @@
 <meta property="og:description" content="Горизонтально-расточной станок INNOS H-130 с ЧПУ. Шпиндель 130 мм, точность ±0.002 мм, 5-осевая обработка."/>
 <meta property="og:type" content="product"/>
 <meta property="og:locale" content="ru_RU"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="../../../assets/js/vendor/tailwind-runtime.js"></script>
+<link href="../../../assets/css/main.css" rel="stylesheet"/>
+<script defer src="../../../assets/js/main.js"></script>
 <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -94,24 +94,37 @@
       }
     </style>
 </head>
-<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-white">
+<body class="page-product bg-surface text-on-surface font-body selection:bg-primary-container selection:text-white">
 <!-- TopNavBar -->
-<header class="fixed top-0 w-full z-50 bg-[#1C1B1B]/40 backdrop-blur-xl border-b border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+<header class="site-header fixed top-0 w-full z-50 bg-[#1C1B1B]/40 backdrop-blur-xl border-b border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
 <div class="flex justify-between items-center px-8 h-20 max-w-[1920px] mx-auto">
-<a href="../../../index.html" class="text-2xl font-bold tracking-tighter text-white uppercase font-headline">Станки-Иннос</a>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-[#C1C6D7] hover:text-white transition-colors font-['Space_Grotesk'] tracking-tight text-sm font-medium" href="../../../index.html">Главная</a>
-<a class="text-[#007FFF] border-b-2 border-[#007FFF] pb-1 font-['Space_Grotesk'] tracking-tight text-sm font-medium" href="../../../catalog.html">Продукция</a>
-<a class="text-[#C1C6D7] hover:text-white transition-colors font-['Space_Grotesk'] tracking-tight text-sm font-medium" href="../../../about.html">О компании</a>
-<a class="text-[#C1C6D7] hover:text-white transition-colors font-['Space_Grotesk'] tracking-tight text-sm font-medium" href="../../../news.html">Новости</a>
-<a class="text-[#C1C6D7] hover:text-white transition-colors font-['Space_Grotesk'] tracking-tight text-sm font-medium" href="../../../contacts.html">Контакты</a>
+<!-- Brand Identity -->
+<a href="../../../index.html" class="text-2xl font-bold tracking-tighter text-white uppercase font-headline">
+                Станки-Иннос
+            </a>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center space-x-8 font-['Space_Grotesk'] tracking-tight text-sm font-medium">
+<a class="text-[#C1C6D7] hover:text-white transition-colors" href="../../../index.html">Главная</a>
+<a class="text-[#C1C6D7] hover:text-white transition-colors" href="../../../catalog.html">Продукция</a>
+<a class="text-[#C1C6D7] hover:text-white transition-colors" href="../../../about.html">О компании</a>
+<a class="text-[#C1C6D7] hover:text-white transition-colors" href="../../../news.html">Новости</a>
+<a class="text-[#C1C6D7] hover:text-white transition-colors" href="../../../contacts.html">Контакты</a>
 </nav>
-<div class="flex items-center gap-4">
-<button class="bg-[#007FFF] text-white px-6 py-2 rounded-lg font-medium hover:scale-95 transition-all duration-150">Запрос котировки</button>
-<div class="flex gap-2">
-<span class="material-symbols-outlined p-2 hover:bg-white/5 rounded transition-colors cursor-pointer text-[#C1C6D7]">language</span>
-<span class="material-symbols-outlined p-2 hover:bg-white/5 rounded transition-colors cursor-pointer text-[#C1C6D7]">settings</span>
+<!-- Actions -->
+<div class="flex items-center space-x-6">
+<div class="hidden xl:flex items-center space-x-6 text-sm">
+    <a href="tel:88005004030" class="text-white hover:text-primary transition-colors flex items-center font-bold tracking-tight">
+        <span class="material-symbols-outlined text-[18px] mr-1">call</span>
+        8 (800) 500-40-30
+    </a>
+    <a href="mailto:sales@stanki-innos.ru" class="text-[#C1C6D7] hover:text-white transition-colors flex items-center">
+        <span class="material-symbols-outlined text-[18px] mr-1">mail</span>
+        sales@stanki-innos.ru
+    </a>
 </div>
+<button class="btn btn-primary bg-primary text-on-primary px-6 py-2.5 rounded-xl font-bold text-sm tracking-wide hover:brightness-110 active:scale-95 transition-all duration-150 shadow-lg shadow-primary/20">
+    Получить ТКП
+</button>
 </div>
 </div>
 </header>
@@ -458,7 +471,7 @@
 </section>
 </main>
 <!-- Footer -->
-<footer class="w-full pt-20 pb-10 px-8 bg-[#131313] border-t border-white/5">
+<footer class="site-footer w-full pt-20 pb-10 px-8 bg-[#131313] border-t border-white/5">
 <div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto">
 <div class="md:col-span-1">
 <span class="text-xl font-black text-white mb-6 block font-headline uppercase">Станки-Иннос</span>
