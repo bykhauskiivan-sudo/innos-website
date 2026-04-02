@@ -52,6 +52,27 @@ const transporter = nodemailer.createTransport({
 });
 
 const normalizeValue = (value) => String(value || "").trim();
+const allowedExtensionSet = new Set([".doc", ".docx", ".xls", ".xlsx", ".zip", ".rar"]);
+const allowedImageMimePrefix = "image/";
+const getFileExtension = (fileName) => {
+  const normalizedName = String(fileName || "").toLowerCase().trim();
+  const lastDotIndex = normalizedName.lastIndexOf(".");
+  if (lastDotIndex <= 0 || lastDotIndex === normalizedName.length - 1) {
+    return "";
+  }
+  return normalizedName.slice(lastDotIndex);
+};
+const isAllowedAttachment = (file) => {
+  if (!file) {
+    return true;
+  }
+  const extension = getFileExtension(file.originalname);
+  const mimeType = String(file.mimetype || "").toLowerCase();
+  if (mimeType.startsWith(allowedImageMimePrefix)) {
+    return true;
+  }
+  return allowedExtensionSet.has(extension);
+};
 
 const buildDateToken = (date) => {
   const pad = (value) => String(value).padStart(2, "0");
@@ -93,6 +114,13 @@ app.post(sendRequestPaths, upload.single("contact_attachment"), async (req, res)
     }
 
     const file = req.file || null;
+    if (file && !isAllowedAttachment(file)) {
+      res.status(400).json({
+        ok: false,
+        error: "Unsupported file type. Allowed: images, Word (.doc/.docx), Excel (.xls/.xlsx), ZIP, RAR"
+      });
+      return;
+    }
 
     const payload = {
       name: normalizeValue(req.body.contact_name),

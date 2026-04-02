@@ -200,7 +200,7 @@
                     </div>
 
                     <div class="border border-dashed border-white/20 rounded-xl p-6 text-on-surface-variant hover:text-white hover:border-primary transition-colors">
-                        <input id="contactAttachment" name="contact_attachment" type="file" class="sr-only" />
+                        <input id="contactAttachment" name="contact_attachment" type="file" accept="image/*,.doc,.docx,.xls,.xlsx,.zip,.rar" class="sr-only" />
                         <label for="contactAttachment" class="flex flex-col items-center justify-center cursor-pointer group">
                             <span class="material-symbols-outlined mb-2 text-primary group-hover:scale-110 transition-transform">upload_file</span>
                             <span id="contactAttachmentLabel" class="text-sm font-medium">Если есть возможность, прикрепите чертеж или ТЗ (до 50 Мб)</span>
@@ -366,6 +366,26 @@
   const submitButton = document.getElementById("contactSubmitButton");
   const mailApiEndpoint = String(form.getAttribute("data-mail-api") || "").trim();
   const maxFileSizeBytes = 50 * 1024 * 1024;
+  const allowedOfficeAndArchiveExtensions = [".doc", ".docx", ".xls", ".xlsx", ".zip", ".rar"];
+  const getFileExtension = (fileName) => {
+    const normalizedName = String(fileName || "").toLowerCase().trim();
+    const lastDotIndex = normalizedName.lastIndexOf(".");
+    if (lastDotIndex <= 0 || lastDotIndex === normalizedName.length - 1) {
+      return "";
+    }
+    return normalizedName.slice(lastDotIndex);
+  };
+  const isAllowedFileType = (file) => {
+    if (!file) {
+      return true;
+    }
+    const extension = getFileExtension(file.name);
+    const mimeType = String(file.type || "").toLowerCase();
+    if (mimeType.startsWith("image/")) {
+      return true;
+    }
+    return allowedOfficeAndArchiveExtensions.includes(extension);
+  };
 
   const setStatus = (text, type) => {
     if (!statusEl) {
@@ -455,6 +475,10 @@
     const file = fileInput && fileInput.files ? fileInput.files[0] : null;
     if (file && file.size > maxFileSizeBytes) {
       setStatus("Размер файла превышает 50 Мб. Уменьшите файл и повторите отправку.", "error");
+      return;
+    }
+    if (file && !isAllowedFileType(file)) {
+      setStatus("Допустимые форматы: изображения, Word (.doc/.docx), Excel (.xls/.xlsx), ZIP и RAR.", "error");
       return;
     }
 
