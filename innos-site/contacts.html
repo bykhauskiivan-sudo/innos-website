@@ -290,7 +290,7 @@
                             <span class="material-symbols-outlined text-[18px]">send</span>
                         </button>
                         <a id="contactMailtoFallback" href="#" class="text-xs text-primary hover:text-white transition-colors hidden">
-                            Открыть почтовый клиент вручную
+                            Открыть почтовый клиент
                         </a>
                         <p id="contactFormStatus" class="text-xs text-on-surface-variant/70" aria-live="polite"></p>
                     </div>
@@ -547,11 +547,9 @@
       setStatus("Формируем письмо с вложением...", "info");
       const emlContent = await createEml({ subject, body, file });
       downloadEml(emlContent, dateToken);
-      setStatus("Черновик письма с вложением сформирован. Откройте скачанный .eml и нажмите Отправить.", "success");
-      window.location.href = mailtoHref;
+      setStatus("Черновик письма с вложением сформирован. Откройте скачанный .eml и нажмите «Отправить» в почтовом клиенте.", "success");
     } catch (error) {
-      setStatus("Не удалось сформировать письмо автоматически. Используйте ссылку «Открыть почтовый клиент вручную».", "error");
-      window.location.href = mailtoHref;
+      setStatus("Не удалось сформировать .eml. Используйте ссылку «Открыть почтовый клиент» ниже.", "error");
     } finally {
       if (submitButton) {
         submitButton.disabled = false;
