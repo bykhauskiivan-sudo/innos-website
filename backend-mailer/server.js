@@ -89,11 +89,7 @@ app.post("/api/send-request", upload.single("contact_attachment"), async (req, r
       return;
     }
 
-    const file = req.file;
-    if (!file) {
-      res.status(400).json({ ok: false, error: "Attachment is required" });
-      return;
-    }
+    const file = req.file || null;
 
     const payload = {
       name: normalizeValue(req.body.contact_name),
@@ -101,7 +97,7 @@ app.post("/api/send-request", upload.single("contact_attachment"), async (req, r
       phone: normalizeValue(req.body.contact_phone),
       email: normalizeValue(req.body.contact_email),
       task: normalizeValue(req.body.contact_task),
-      fileName: normalizeValue(file.originalname || "attachment")
+      fileName: file ? normalizeValue(file.originalname || "attachment") : "не прикреплен"
     };
 
     if (!payload.name || !payload.company || !payload.phone || !payload.email || !payload.task) {
@@ -112,20 +108,25 @@ app.post("/api/send-request", upload.single("contact_attachment"), async (req, r
     const subject = `innos TZ ${buildDateToken(new Date())}`;
     const text = buildMailText(payload);
 
-    await transporter.sendMail({
+    const message = {
       from: smtpUser,
       to: targetEmail,
       replyTo: payload.email,
       subject,
-      text,
-      attachments: [
+      text
+    };
+
+    if (file) {
+      message.attachments = [
         {
           filename: payload.fileName,
           content: file.buffer,
           contentType: file.mimetype || "application/octet-stream"
         }
-      ]
-    });
+      ];
+    }
+
+    await transporter.sendMail(message);
 
     res.json({ ok: true, message: "Email sent" });
   } catch (error) {
