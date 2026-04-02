@@ -171,7 +171,7 @@
                 <h3 class="text-2xl sm:text-3xl font-headline font-bold text-white mb-2 relative z-10">Отправьте запрос или ТЗ</h3>
                 <p class="text-on-surface-variant text-sm mb-8 md:mb-10 relative z-10">Мы ответим вам в течение 1 рабочего часа с детальным планом.</p>
 
-                <form id="contactRequestForm" class="site-form space-y-6 relative z-10" data-mail-api="https://formsubmit.co/ajax/contact@investstanok.ru" novalidate>
+                <form id="contactRequestForm" class="site-form space-y-6 relative z-10" data-mail-api="/api/send-request" novalidate>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label for="contactName" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Имя представителя</label>
@@ -382,16 +382,6 @@
     }
   };
 
-  const toDateToken = (date) => {
-    const pad = (value) => String(value).padStart(2, "0");
-    const hh = pad(date.getHours());
-    const mm = pad(date.getMinutes());
-    const dd = pad(date.getDate());
-    const mmDate = pad(date.getMonth() + 1);
-    const yyyy = date.getFullYear();
-    return `${hh}:${mm} ${dd}.${mmDate}.${yyyy}`;
-  };
-
   const sendViaApi = async (requestData) => {
     const response = await fetch(mailApiEndpoint, {
       method: "POST",
@@ -455,40 +445,22 @@
     }
 
     const formData = new FormData(form);
-    const requestDate = new Date();
-    const dateToken = toDateToken(requestDate);
-    const subject = `innos TZ ${dateToken}`;
     const payload = {
       name: String(formData.get("contact_name") || "").trim(),
       company: String(formData.get("contact_company") || "").trim(),
       phone: String(formData.get("contact_phone") || "").trim(),
       email: String(formData.get("contact_email") || "").trim(),
-      task: String(formData.get("contact_task") || "").trim(),
-      fileName: file ? file.name : "не прикреплен"
+      task: String(formData.get("contact_task") || "").trim()
     };
 
-    const message = [
-      "Новая заявка INNOS",
-      "",
-      `Имя представителя: ${payload.name}`,
-      `Организация (ИНН): ${payload.company}`,
-      `Телефон: ${payload.phone}`,
-      `E-mail: ${payload.email}`,
-      `Задача: ${payload.task}`,
-      `Файл: ${payload.fileName}`
-    ].join("\n");
-
     const requestData = new FormData();
-    requestData.append("_subject", subject);
-    requestData.append("_captcha", "false");
-    requestData.append("name", payload.name);
-    requestData.append("email", payload.email);
-    requestData.append("company", payload.company);
-    requestData.append("phone", payload.phone);
-    requestData.append("task", payload.task);
-    requestData.append("message", message);
+    requestData.append("contact_name", payload.name);
+    requestData.append("contact_company", payload.company);
+    requestData.append("contact_phone", payload.phone);
+    requestData.append("contact_email", payload.email);
+    requestData.append("contact_task", payload.task);
     if (file) {
-      requestData.append("attachment", file);
+      requestData.append("contact_attachment", file);
     }
 
     try {

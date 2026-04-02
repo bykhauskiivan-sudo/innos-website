@@ -1,0 +1,12 @@
+[build]
+  publish = "innos-site"
+  command = "npm --prefix backend-mailer ci"
+
+[functions]
+  directory = "backend-mailer/netlify/functions"
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
